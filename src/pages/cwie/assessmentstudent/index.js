@@ -138,7 +138,7 @@ const SurveyForm = () => {
                     <tr>
                       <td height='100' class='left-align'>
                         &nbsp; 2. คุณภาพงาน(Quality of work) <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ทํางานได้ถ้กต้องครบถ้วนมีความประณีตเรียบร้อย มีความรอบคอบ
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ทํางานได้ถูกต้องครบถ้วนมีความประณีตเรียบร้อย มีความรอบคอบ
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ไม่เกิดปัญหาติดตามมางานไม่ค้างคา
                         ทํางานเสร็จทันเวลาหรือก่อนเวลาที่กำหนด
@@ -504,7 +504,7 @@ const SurveyForm = () => {
                     </tr>
                     <tr>
                       <td height='80' class='left-align'>
-                        &nbsp; 17. ความมีระเบียบวนิัย ปฏบิัติตามวัฒนธรรมขององค์กร <br></br>
+                        &nbsp; 17. ความมีระเบียบวินัย ปฏิบัติตามวัฒนธรรมขององค์กร <br></br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Discipline and adaptability to formal
                         organization) <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ความสนใจเรียนรู้ศึกษา กฎระเบียบ นโยบายต่างๆ
@@ -531,8 +531,8 @@ const SurveyForm = () => {
                     <tr>
                       <td height='80' class='left-align'>
                         &nbsp; 18. คุณธรรมและจริยธรรม (Ethics and morality) <br></br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;มีความซอสื่ ัตย์สุจริต มจีิตใจสะอาด
-                        รจู้ักเสียสละ ไมเห่ ็นแก่ตัว เอื้อเฟื้อช่วยเหลือผู้อื่น <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;มีความซื่อสัตย์สุจริต มีจิตใจสะอาด
+                        รู้จักเสียสละ ไม่เห็นแก่ตัว เอื้อเฟื้อช่วยเหลือผู้อื่น <br />
                       </td>
                       <td height='30' align='center'>
                         10 คะแนน

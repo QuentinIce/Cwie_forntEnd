@@ -90,7 +90,17 @@ const Navigation = () => {
         title: 'แบบประเมิน(อาจารย์ประเมินบริษัท)',
         icon: AccessibilityNewIcon,
         path: '/cwie/assessmentcom'
-      }
+      },
+      {
+        title: 'ประเมินนักศึกษา (ระหว่างนิเทศ)',
+        icon: AccessibilityNewIcon,
+        path: '/cwie/assessment'
+      },
+      {
+        title: 'ประเมินบริษัท (อาจารย์ประเมินบริษัท',
+        icon: AccessibilityNewIcon,
+        path: '/cwie/assessmentstudent'
+      },
     )
   } else if (status === 'สถานประกอบการ') {
     menuItems.push(
