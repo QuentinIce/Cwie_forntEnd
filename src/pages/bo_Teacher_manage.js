@@ -82,10 +82,10 @@ export default function bo_Teacher_manage() {
   }
 
   const columns = [
-    { field: 'tea_name', headerName: 'id', width: 150 },
-    { field: 'tea_lname', headerName: 'Name', width: 100 },
-    { field: 'tea_status', headerName: 'Last Name', width: 120 },
-    { field: 'tea_tel', headerName: 'curriculum', width: 150 },
+    { field: 'tea_name', headerName: 'Name', width: 150 },
+    { field: 'tea_lname', headerName: 'Last Name', width: 100 },
+    { field: 'tea_status', headerName: 'Status', width: 120 },
+    { field: 'tea_tel', headerName: 'Tel', width: 150 },
     { field: 'curriculum_name', headerName: 'curriculum', width: 150 },
     { field: 'studygroup_name', headerName: 'Study Group', width: 200 },
     {
@@ -317,7 +317,7 @@ export default function bo_Teacher_manage() {
                 </Box>
               </Box>
               <Box>
-                <Button onClick={() => handleOpen()}>Insert Instructor</Button>
+                <Button onClick={() => handleOpen()}>Insert Teacher</Button>
               </Box>
               <Box>
                 <DataGrid rows={rowDataTeacher} columns={columns} getRowId={row => row.tea_id} />
@@ -329,7 +329,7 @@ export default function bo_Teacher_manage() {
                 >
                   <Box sx={style}>
                     <Card>
-                      <CardHeader title='Insert Instructor' titleTypographyProps={{ variant: 'h6' }} />
+                      <CardHeader title='Insert Teacher' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
@@ -476,7 +476,7 @@ export default function bo_Teacher_manage() {
                 >
                   <Box sx={style}>
                     <Card>
-                      <CardHeader title='Edit Instructor' titleTypographyProps={{ variant: 'h6' }} />
+                      <CardHeader title='Edit Teacher' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
@@ -522,7 +522,7 @@ export default function bo_Teacher_manage() {
                                 <Grid item xs={12} sm={12}>
                                   <TextField
                                     fullWidth
-                                    label='Teacher Name'
+                                    label='Status'
                                     onChange={event => HandleChange(event, 'tea_status')}
                                     error={colorChangeTc.tea_status}
                                     value={dataTeacher.tea_status}

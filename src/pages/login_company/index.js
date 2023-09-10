@@ -40,6 +40,8 @@ import Swal from 'sweetalert2'
 
 // import Cookies from 'js-cookie'
 import cookieCutter from 'cookie-cutter'
+import Cookies from 'js-cookie'
+
 const now = new Date()
 
 // ** Styled Components
@@ -95,72 +97,13 @@ const LoginPage = () => {
       .then(teaData => {
         if (teaData.data.statusCode !== 404) {
           // ถ้าไอดีตรงใน authenticationtea
-          cookieCutter.set('._jwtUsername', teaData.data.jwt, {
-            expires: now,
-            secure: true
-          })
-          cookieCutter.set('._jwtRole', teaData.data.jwtRole, {
-            expires: now,
-            secure: true
-          })
+          Cookies.set('._jwtUsername', teaData.data.jwt, { path: '/' })
+          Cookies.set('._jwtRole', teaData.data.jwtRole, { path: '/' })
           setSuccess(true)
-        } else {
-          // ถ้าไอดีไม่ตรงใน authenticationtea
-          // ลองเรียก API authenticationofficer
-          axios
-            .post('http://localhost:3200/api/authenticationofficer', {
-              username: values.email,
-              password: values.password
-            })
-            .then(officerData => {
-              if (officerData.data.statusCode !== 404) {
-                // ถ้าไอดีตรงใน authenticationofficer
-                cookieCutter.set('._jwtUsername', officerData.data.jwt, {
-                  expires: now,
-                  secure: true
-                })
-                cookieCutter.set('._jwtRole', officerData.data.jwtRole, {
-                  expires: now,
-                  secure: true
-                })
-                setSuccess(true)
-              } else {
-                // ถ้าไอดีไม่ตรงใน authenticationofficer
-                // ลองเรียก API authenticationscom
-                axios
-                  .post('http://localhost:3200/api/authenticationcom', {
-                    username: values.email,
-                    password: values.password
-                  })
-                  .then(scomData => {
-                    if (scomData.data.statusCode !== 404) {
-                      // ถ้าไอดีตรงใน authenticationscom
-                      cookieCutter.set('._jwtUsername', scomData.data.jwt, {
-                        expires: now,
-                        secure: true
-                      })
-                      cookieCutter.set('._jwtRole', scomData.data.jwtRole, {
-                        expires: now,
-                        secure: true
-                      })
-                      setSuccess(true)
-                    } else {
-                      // ถ้าไอดีไม่ตรงในทั้งสาม API
-                      setSuccess(false)
-                    }
-                  })
-                  .catch(error => {
-                    console.error('Error calling authenticationscom API:', error)
-                  })
-              }
-            })
-            .catch(error => {
-              console.error('Error calling authenticationofficer API:', error)
-            })
         }
       })
       .catch(error => {
-        console.error('Error calling authenticationtea API:', error)
+        console.error('Error calling authenticationscom API:', error)
       })
   }
 

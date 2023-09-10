@@ -50,6 +50,7 @@ const bo_Student_manage = () => {
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
+
   const handleClose = () => {
     setOpen(false)
     setDataSt(intial)
@@ -58,6 +59,7 @@ const bo_Student_manage = () => {
 
   const [openEditSt, setOpenEditSt] = useState(false)
   const handleOpenEditSt = () => setOpenEditSt(true)
+
   const handleCloseEditSt = () => {
     setOpenEditSt(false)
     setDataSt(intial)
@@ -66,6 +68,7 @@ const bo_Student_manage = () => {
 
   const [openDelSt, setOpenDelSt] = useState(false)
   const handleOpenDelSt = () => setOpenDelSt(true)
+
   const handleClosDelSt = () => {
     setOpenDelSt(false)
   }

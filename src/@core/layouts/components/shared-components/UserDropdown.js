@@ -23,7 +23,6 @@ import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
 import Cookies from 'js-cookie'
-import cookieCutter from 'cookie-cutter'
 import axios from 'axios'
 
 // ** Styled Components
@@ -48,7 +47,7 @@ const UserDropdown = () => {
   const [showstatus, setShowstate] = useState('')
 
   // console.log(Cookies.get('._jwtUsername'))
-  // console.log(role)
+  console.log(role)
 
   useEffect(() => {
     axios
@@ -123,11 +122,9 @@ const UserDropdown = () => {
   }
 
   const handleDropdownCloselogout = url => {
-    if (url) {
-      router.push(url)
-      Cookies.remove('._jwtUsername') //ใช้เพื่อกำหนดเวลาให้คุกกี้หมดเวลา
-      Cookies.remove('._jwtRole')
-    }
+    Cookies.remove('._jwtUsername', { path: '/' })
+    Cookies.remove('._jwtRole', { path: '/' })
+    router.push(url)
   }
 
   const styles = {

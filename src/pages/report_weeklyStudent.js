@@ -17,39 +17,80 @@ import Icon from '@mdi/react'
 import { mdiPoll } from '@mdi/js'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-Select, FormControl, InputLabel, MenuItem
+import Cookies from 'js-cookie'
 
 import { DailyReport, MonthlyReport, YearReport } from './DummyDay/dailyReport'
 
-export default function report_weeklyStudent() {
+const Report_weeklyStudent = () => {
   const dropDown = {
     DailyReport: DailyReport,
     MonthlyReport: MonthlyReport,
     YearReport: YearReport
   }
 
+  const jwtUsername = Cookies.get('._jwtUsername')
+  const jwtRole = Cookies.get('._jwtRole')
+  const [username, setUsername] = useState('')
+  const [status, setStatus] = useState('')
+  const [studentData, setStudentData] = useState('')
+  const [resetData, setResetData] = useState({})
+
+  useEffect(() => {
+    axios
+      .post('http://localhost:3200/api/verify_authen', {
+        token: jwtUsername,
+        tokenRole: jwtRole
+      })
+      .then(data => {
+        setUsername(data.data.User)
+        setStatus(data.data.stateRole)
+      })
+  }, [])
+
+  useEffect(() => {
+    if (username !== undefined && status !== undefined) {
+      if (status === 'นักศึกษา') {
+        axios.post('http://localhost:3200/api/ReadStudent', { username: username }).then(data => {
+          if (data.data.length > 0) {
+            setStudentData(data.data[0])
+          }
+        })
+      }
+    }
+  }, [username, status])
+
+  useEffect(() => {
+    console.log('showname', studentData)
+  }, [studentData])
+
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
+
   const handleClose = () => {
     setOpen(false)
-    setReportData(intialReport)
+    setReportData(resetData)
     setColoChangeReport(colorReport)
   }
 
-  const intialReport = {
-    re_hname: '',
-    re_week: '',
-    re_details: '',
-    com_name: ''
-  }
+  useEffect(() => {
+    const dataSetup = {
+      re_hname: '',
+      re_week: '',
+      re_details: '',
+      Id: studentData.Id,
+      com_id: ''
+    }
+    setReportData(dataSetup)
+    setResetData(dataSetup)
+  }, [studentData])
 
-  const [reportData, setReportData] = useState(intialReport)
+  const [reportData, setReportData] = useState({})
 
   const colorReport = {
     re_hname: false,
     re_week: false,
     re_details: false,
-    com_name: false
+    com_id: 'false'
   }
 
   const [colorChangeReport, setColoChangeReport] = useState(colorReport)
@@ -73,21 +114,29 @@ export default function report_weeklyStudent() {
         setColoChangeReport(pre => ({ ...pre, re_details: false }))
       }
       setReportData(pre => ({ ...pre, re_details: newStr }))
-    } else if (type === 'com_name') {
-      const newStr = event.target.value.replace('', '')
-      if (reportData.com_name !== '') {
-        setColoChangeReport(pre => ({ ...pre, com_name: false }))
+    } else if (type === 'com_id') {
+      const newStr = event.target.value
+      if (reportData.com_id !== '') {
+        setColoChangeReport(pre => ({ ...pre, com_id: false }))
       }
-      setReportData(pre => ({ ...pre, com_name: newStr }))
+      setReportData(pre => ({ ...pre, com_id: newStr }))
     }
   }
+
+  const [dataCompany, setDataCompany] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3200/api/v1/companys').then(res => {
+      setDataCompany(res.data.data)
+    })
+  }, [])
 
   const handleOnInsertReport = () => {
     if (
       reportData.re_hname !== '' &&
       reportData.re_week !== '' &&
       reportData.re_details !== '' &&
-      reportData.com_name !== ''
+      reportData.com_id !== ''
     ) {
       setReportData(pre => ({
         ...pre,
@@ -98,7 +147,7 @@ export default function report_weeklyStudent() {
       console.log(res)
       window.location.reload()
       handleClose()
-      setReportData(intialReport)
+      setReportData(resetData)
     })
   }
 
@@ -249,24 +298,28 @@ export default function report_weeklyStudent() {
                       </Grid>
                     </form>
                   </Box>
-                  <Box sx={{ width: '100%', display: 'flex' }}>
-                    <Box sx={{ width: '32%', p: 4 }}>
-                      <Typography variant='h6'>Name Establishment:</Typography>
-                    </Box>
-                    <Box sx={{ width: '65%' }}>
-                      <Grid container spacing={5}>
-                        <Grid item xs={12}>
-                          <TextField
-                            fullWidth
-                            label='Name Establishment'
-                            placeholder='Establishment'
-                            onChange={event => HandleOnChangeReport(event, 'com_name')}
-                            error={colorChangeReport.com_name}
-                            value={reportData.com_name}
-                          />
-                        </Grid>
-                      </Grid>
-                    </Box>
+                  <Box sx={{ width: '80%' }}>
+                    <Grid item xs={12} sm={6}>
+                      <Typography variant='h6'>Company:</Typography>
+                      <FormControl variant='outlined' fullWidth sx={{ mb: 2 }}>
+                        <InputLabel id='dataCompany-label'>Company:</InputLabel>
+                        <Select
+                          required
+                          labelId='dataCompany-label'
+                          id='dataCompany'
+                          name='dataCompany'
+                          label='dataCompany'
+                          onChange={event => HandleOnChangeReport(event, 'com_id')}
+                          value={dataCompany.com_nam}
+                        >
+                          {dataCompany?.map(row => (
+                            <MenuItem key={row.com_id} value={row.com_id}>
+                              {row.com_name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
                   </Box>
                   <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                     <Button onClick={() => handleOnInsertReport()}>submit</Button>
@@ -288,3 +341,5 @@ export default function report_weeklyStudent() {
     </Box>
   )
 }
+
+export default Report_weeklyStudent

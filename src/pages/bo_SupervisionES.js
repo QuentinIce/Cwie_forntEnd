@@ -35,8 +35,8 @@ export default function bo_SupervisionES() {
                   <Icon path={mdiAccountMultiple} size={6} />
                 </Box>
                 <Box>
-                  <Typography variant='h5'>Supervision Establishment Management</Typography>
-                  <Typography variant='subtitle1'>Supervision Establishment Management</Typography>
+                  <Typography variant='h5'>Supervision Establishment Show</Typography>
+                  <Typography variant='subtitle1'>Supervision Establishment Show</Typography>
                 </Box>
               </Box>
               <Box>

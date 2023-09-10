@@ -27,7 +27,7 @@ const SurveyForm = () => {
     text8: '',
     text9: '',
     text10: '',
-    totalScore: 0,
+    totalScore: 0
   })
   const [sumfi, setSumfi] = useState(0)
   const [values, setValues] = useState({
@@ -56,25 +56,33 @@ const SurveyForm = () => {
   }
 
   useEffect(() => {
-    const es_id1Value = parseInt(sum2.text3) || 0;
-    const es_id1_2Value = parseInt(sum2.text4) || 0;
-    const es_id1_3Value = parseInt(sum2.text5) || 0;
-    const es_id1_4Value = parseInt(sum2.text6) || 0;
-    const es_id1_5Value = parseInt(sum2.text7) || 0;
-    const es_id1_6Value = parseInt(sum2.text8) || 0;
-    const es_id1_7Value = parseInt(sum2.text9) || 0;
-    const es_id2Value = parseInt(sum2.text10) || 0;
+    const es_id1Value = parseInt(sum2.text3) || 0
+    const es_id1_2Value = parseInt(sum2.text4) || 0
+    const es_id1_3Value = parseInt(sum2.text5) || 0
+    const es_id1_4Value = parseInt(sum2.text6) || 0
+    const es_id1_5Value = parseInt(sum2.text7) || 0
+    const es_id1_6Value = parseInt(sum2.text8) || 0
+    const es_id1_7Value = parseInt(sum2.text9) || 0
+    const es_id2Value = parseInt(sum2.text10) || 0
 
-    const totalScore = es_id1Value + es_id1_2Value + es_id1_3Value + es_id1_4Value + es_id1_5Value + es_id1_6Value + es_id1_7Value + es_id2Value;
+    const totalScore =
+      es_id1Value +
+      es_id1_2Value +
+      es_id1_3Value +
+      es_id1_4Value +
+      es_id1_5Value +
+      es_id1_6Value +
+      es_id1_7Value +
+      es_id2Value
 
-    setSum2((prevState) => ({ ...prevState, totalScore }));
-  }, [setSum2]);
+    setSum2(prevState => ({ ...prevState, totalScore }))
+  }, [setSum2])
 
   useEffect(() => {
     if (sum2.totalScore !== undefined && sum2.totalScore !== 0) {
-      setSum2((prevState) => ({ ...prevState, totalScore: prevState.totalScore / 4 }));
+      setSum2(prevState => ({ ...prevState, totalScore: prevState.totalScore / 4 }))
     }
-  }, [sum2.totalScore]);
+  }, [sum2.totalScore])
 
   const handleSubmitClik = event => {
     setSumfi(values + sum2 + sum3 + sum4)
@@ -97,7 +105,7 @@ const SurveyForm = () => {
             {/* <?php // include('menu_l.php'); ?> */}
           </Grid>
           <Grid item xs={12} md={10}>
-            <h3 align='center'>ประเมินบริษัท (อาจารย์ประเมินบริษัท)</h3>
+            <h3 align='center'>ประเมินนักศึกษา (สถานประกอบการประเมินนักศึกษา)</h3>
             <form id='formqsys' name='formqsys' method='post'>
               <Paper sx={{ width: '70%', margin: 'auto' }}>
                 {/** หัวข้อที่ 1 */}

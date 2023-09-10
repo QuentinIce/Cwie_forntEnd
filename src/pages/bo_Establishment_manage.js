@@ -299,7 +299,7 @@ export default function bo_Establishment_manage() {
                 </Box>
               </Box>
               <Box>
-                <Button onClick={handleOpen}>Insert Company</Button>
+                <Button onClick={handleOpen}>Insert Establishment</Button>
                 <Modal
                   open={open}
                   onClose={handleClose}
@@ -313,14 +313,14 @@ export default function bo_Establishment_manage() {
                         <form onSubmit={e => e.preventDefault()}>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '25%' }}>
-                              <Typography>Company Name:</Typography>
+                              <Typography>Establishment Name</Typography>
                             </Box>
                             <Box sx={{ width: '90%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Name'
+                                    label='Establishment Name'
                                     onChange={event => HandleChangeComp(event, 'com_name')}
                                     error={coloChangeComp.com_name}
                                     value={dataCompany.com_name}
@@ -331,14 +331,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Type:</Typography>
+                              <Typography>Establishment Type</Typography>
                             </Box>
                             <Box sx={{ width: '50%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Type'
+                                    label='Establishment Type'
                                     onChange={event => HandleChangeComp(event, 'com_type')}
                                     error={coloChangeComp.com_type}
                                     value={dataCompany.com_type}
@@ -349,14 +349,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Addres:</Typography>
+                              <Typography>Establishment Addres</Typography>
                             </Box>
                             <Box sx={{ width: '80%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Address'
+                                    label='Establishment Address'
                                     multiline
                                     minRows={2}
                                     onChange={event => HandleChangeComp(event, 'com_add')}
@@ -369,14 +369,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Province:</Typography>
+                              <Typography>Establishment Province</Typography>
                             </Box>
                             <Box sx={{ width: '50%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Province'
+                                    label='Establishment Province'
                                     onChange={event => HandleChangeComp(event, 'com_province')}
                                     error={coloChangeComp.com_province}
                                     value={dataCompany.com_province}
@@ -387,14 +387,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Contact:</Typography>
+                              <Typography>Establishment Contact</Typography>
                             </Box>
                             <Box sx={{ width: '50%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Contact'
+                                    label='Establishment Contact'
                                     onChange={event => HandleChangeComp(event, 'com_contact')}
                                     error={coloChangeComp.com_contact}
                                     value={dataCompany.com_contact}
@@ -432,19 +432,19 @@ export default function bo_Establishment_manage() {
                 >
                   <Box sx={style}>
                     <Card>
-                      <CardHeader title='Insert Student' titleTypographyProps={{ variant: 'h6' }} />
+                      <CardHeader title='Insert Establishment' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '25%' }}>
-                              <Typography>Company Name:</Typography>
+                              <Typography>Establishment Name</Typography>
                             </Box>
                             <Box sx={{ width: '90%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Name'
+                                    label='Establishment Name'
                                     onChange={event => HandleChangeComp(event, 'com_name')}
                                     error={coloChangeComp.com_name}
                                     value={dataCompany.com_name}
@@ -455,14 +455,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Type:</Typography>
+                              <Typography>Establishment Type</Typography>
                             </Box>
                             <Box sx={{ width: '50%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Type'
+                                    label='Establishment Type'
                                     onChange={event => HandleChangeComp(event, 'com_type')}
                                     error={coloChangeComp.com_type}
                                     value={dataCompany.com_type}
@@ -473,14 +473,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Addres:</Typography>
+                              <Typography>Establishment Addres</Typography>
                             </Box>
                             <Box sx={{ width: '80%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Address'
+                                    label='Establishment Address'
                                     multiline
                                     minRows={2}
                                     onChange={event => HandleChangeComp(event, 'com_add')}
@@ -493,14 +493,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Province:</Typography>
+                              <Typography>Establishment Province</Typography>
                             </Box>
                             <Box sx={{ width: '50%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Province'
+                                    label='Establishment Province'
                                     onChange={event => HandleChangeComp(event, 'com_province')}
                                     error={coloChangeComp.com_province}
                                     value={dataCompany.com_province}
@@ -511,14 +511,14 @@ export default function bo_Establishment_manage() {
                           </Box>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
                             <Box sx={{ p: 4, width: '22%' }}>
-                              <Typography>Company Contact:</Typography>
+                              <Typography>Establishment Contact</Typography>
                             </Box>
                             <Box sx={{ width: '50%' }}>
                               <Grid container spacing={5}>
                                 <Grid item xs={12}>
                                   <TextField
                                     fullWidth
-                                    label='Company Contact'
+                                    label='Establishment Contact'
                                     onChange={event => HandleChangeComp(event, 'com_contact')}
                                     error={coloChangeComp.com_contact}
                                     value={dataCompany.com_contact}

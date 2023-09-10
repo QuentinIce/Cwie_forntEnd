@@ -7,13 +7,16 @@ import Modal from '@mui/material/Modal'
 
 const dummyImage = [
   {
-    img: '/images/news/169092375_3837059186331511_6795198715943974550_n'
+    img: 'https://ba.rmuti.ac.th/is21/images/news/News-220210922223231.jpg'
   },
   {
     img: 'https://cdn.chiangmainews.co.th/wp-content/uploads/2023/08/08095936/1691463576_223549-chiangmainews.jpg'
   },
   {
-    img: 'https://cdn.chiangmainews.co.th/wp-content/uploads/2023/08/08095936/1691463576_223549-chiangmainews.jpg'
+    img: 'https://www.guideubon.com/2.0/files/5216/8062/0266/Major-UBU-02.jpg'
+  },
+  {
+    img: ''
   }
 ]
 

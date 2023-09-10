@@ -8,7 +8,7 @@ export default function about() {
         <Typography variant='h4'>About</Typography>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-        <Box sx={{ width: '50%', mt: 30, fontFamily: '' }}>
+        <Box sx={{ width: '50%', mt: 30, fontFamily: '', ml: 30 }}>
           <Typography variant='subtitle1' sx={{ fontFamily: '' }}>
             &nbsp;&nbsp;&nbsp;&nbsp;ด้วยคณะวิศวกรรมศาสตร์
             มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนาได้กำหนดวิสัยทัศน์ที่มุ่งหมายในการผลิตบัณฑิตนักปฏิบัติที่มีความเชี่ยวชาญทางด้านวิทยาศาสตร์และเทคโนโลยี
@@ -16,9 +16,9 @@ export default function about() {
             โดยมุ่งเน้นกระบวนการจัดการศึกษาเฉพาะทาง
           </Typography>
         </Box>
-        <Box sx={{ ml: 10 }}>
+        <Box sx={{ ml: 30 }}>
           <Card>
-            <Image src={'/images/dean.png'} width={400} height={300} />
+            <Image src={'/images/dean.png'} width={300} height={300} />
           </Card>
         </Box>
       </Box>

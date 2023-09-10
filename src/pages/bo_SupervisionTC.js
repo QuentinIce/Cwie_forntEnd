@@ -16,7 +16,7 @@ export default function bo_SupervisionTC() {
     { field: 'su_daparment', headerName: 'Department', width: 150 },
     { field: 'su_mname', headerName: 'Manager Name ', width: 150 },
     { field: 'su_job', headerName: 'Job position', width: 150 },
-    { field: 'su_numstu', headerName: 'Student Name', width: 150 },
+    { field: 'su_numstu', headerName: 'Student amount', width: 150 },
     { field: 'su_sugges', headerName: 'comments', width: 150 }
   ]
 
@@ -37,8 +37,8 @@ export default function bo_SupervisionTC() {
                   <Icon path={mdiAccountMultiple} size={6} />
                 </Box>
                 <Box>
-                  <Typography variant='h5'>Supervision Establishment Management</Typography>
-                  <Typography variant='subtitle1'>Supervision Establishment Management</Typography>
+                  <Typography variant='h5'>Supervision Teacher Management</Typography>
+                  <Typography variant='subtitle1'>Supervision Teacher Management</Typography>
                 </Box>
               </Box>
               <Box>

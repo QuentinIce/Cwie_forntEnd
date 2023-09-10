@@ -13,19 +13,19 @@ const dummy = [
     img: 'https://media.jobthai.com/v1/images/logo-pic-map/278479_pic_20221003151315.jpeg'
   },
   {
-    img: 'https://scontent.fbkk29-4.fna.fbcdn.net/v/t39.30808-6/301539972_482536413881523_601308938654490091_n.jpg?_nc_cat=111&cb=99be929b-3346023f&ccb=1-7&_nc_sid=be3454&_nc_ohc=8CYWeUOjqWoAX-tYSol&_nc_ht=scontent.fbkk29-4.fna&oh=00_AfBYIGE7PIHDBpJJeKiehNTIxVOsdRHYsPZIABBwm0j5iA&oe=64DE1EA9'
+    img: 'https://media.jobthai.com/v1/images/logo-pic-map/278479_logo_20221003151308.jpeg'
   },
   {
-    img: 'https://scontent.fbkk29-6.fna.fbcdn.net/v/t39.30808-6/303129534_407381381519920_4828122316521146319_n.jpg?_nc_cat=103&cb=99be929b-3346023f&ccb=1-7&_nc_sid=be3454&_nc_ohc=P0NRr0ybY6QAX9PJLcv&_nc_ht=scontent.fbkk29-6.fna&oh=00_AfBCtfyBzZ5lL5XcWhZggjzUyX81F_UUYm3rYOd5uap93Q&oe=64DE1984'
+    img: 'https://static.vecteezy.com/system/resources/thumbnails/004/700/907/small/p-letter-logo-concept-isolated-on-white-background-vector.jpg'
   },
   {
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwbjszWvQUT_pGDBjed5c-RnNXebVD5Twj4g&usqp=CAU'
   },
   {
-    img: ''
+    img: 'https://jobbkk.com/upload/employer/06/7E6/0097E6/images/38886.webp'
   },
   {
-    img: ''
+    img: 'https://comtel.co.za/wp-content/uploads/2022/07/The_comtel_logo.png'
   }
 ]
 
