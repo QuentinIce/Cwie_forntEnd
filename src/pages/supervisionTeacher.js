@@ -1,16 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  TextField,
-  Typography,
-  Select,
-  FormControl,
-  InputLabel,
-  MenuItem
-} from '@mui/material'
+import { Box, Button, Card, CardContent, Grid, TextField, Typography } from '@mui/material'
 import TabContext from '@mui/lab/TabContext'
 import Tab from '@mui/material/Tab'
 import TabList from '@mui/lab/TabList'
@@ -19,7 +7,6 @@ import { useEffect, useState } from 'react'
 import Icon from '@mdi/react'
 import { mdiFileDocumentCheckOutline } from '@mdi/js'
 import axios from 'axios'
-import Cookies from 'js-cookie'
 
 export default function SupervisionTeacher() {
   const [value, setValue] = useState('1')
@@ -28,30 +15,17 @@ export default function SupervisionTeacher() {
     setValue(newValue)
   }
 
-  const [teacherData, setTeacherData] = useState('')
-  const jwtUsername = Cookies.get('._jwtUsername')
-  const jwtRole = Cookies.get('._jwtRole')
-  const [username, setUsername] = useState('')
-  const [status, setStatus] = useState('')
-  const [resetData, setResetData] = useState({})
-
-  useEffect(() => {
-    const dataSetup = {
-      su_day: '',
-      su_mon: '',
-      su_year: '',
-      su_time: '',
-      su_daparment: '',
-      su_mname: '',
-      su_job: '',
-      su_numstu: '',
-      su_sugges: '',
-      tea_id: teacherData.tea_id,
-      com_id: ''
-    }
-    setDataSupervisionTc(dataSetup)
-    setResetData(dataSetup)
-  }, [teacherData])
+  const intial = {
+    su_day: '',
+    su_mon: '',
+    su_year: '',
+    su_time: '',
+    su_daparment: '',
+    su_mname: '',
+    su_job: '',
+    su_numstu: '',
+    su_sugges: ''
+  }
 
   const colorST = {
     su_day: false,
@@ -62,42 +36,11 @@ export default function SupervisionTeacher() {
     su_mname: false,
     su_job: false,
     su_numstu: false,
-    su_sugges: false,
-    com_id: false
+    su_sugges: false
   }
 
-  const [dataSupervisionTc, setDataSupervisionTc] = useState({})
+  const [dataSupervisionTc, setDataSupervisionTc] = useState(intial)
   const [colorSupervision, setColorSupervision] = useState(colorST)
-
-  useEffect(() => {
-    axios
-      .post('http://localhost:3200/api/verify_authen', {
-        token: jwtUsername,
-        tokenRole: jwtRole
-      })
-      .then(data => {
-        setUsername(data.data.User)
-        setStatus(data.data.stateRole)
-      })
-  }, [])
-
-  const [dataCompany, setDataCompany] = useState([])
-
-  useEffect(() => {
-    axios.get('http://localhost:3200/api/v1/companys').then(res => {
-      setDataCompany(res.data.data)
-    })
-  }, [])
-
-  useEffect(() => {
-    if (status === 'อาจารย์') {
-      axios.post('http://localhost:3200/api/ReadTeacher', { username: username }).then(data => {
-        if (data.data.length > 0) {
-          setTeacherData(data.data[0])
-        }
-      })
-    }
-  }, [username, status])
 
   const HandleOnChangeSE = (event, type) => {
     if (type === 'su_day') {
@@ -154,12 +97,6 @@ export default function SupervisionTeacher() {
         setColorSupervision(pre => ({ ...pre, su_sugges: false }))
       }
       setDataSupervisionTc(pre => ({ ...pre, su_sugges: newStr }))
-    } else if (type === 'com_id') {
-      const newStr = event.target.value
-      if (dataSupervisionTc.com_id !== '') {
-        setColorSupervision(pre => ({ ...pre, com_id: false }))
-      }
-      setDataSupervisionTc(pre => ({ ...pre, com_id: newStr }))
     }
   }
 
@@ -180,7 +117,7 @@ export default function SupervisionTeacher() {
         ...dataSupervisionTc // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3200/api/v1/supervisionteainsert', dataSupervisionTc)
+        .post('http://localhost:3200/api/v1/supervisionstuinsert', dataSupervisionTc)
         .then(res => {
           window.location.reload()
           // setdataSupervisionTc(intialSt)
@@ -407,31 +344,7 @@ export default function SupervisionTeacher() {
                         </Grid>
                       </Box>
                     </Box>
-                    <Box>
-                      <Grid item xs={12} sm={6}>
-                        <Typography variant='h6' sx={{ p: 2 }}>
-                          Company
-                        </Typography>
-                        <FormControl variant='outlined' fullWidth sx={{ mb: 2 }}>
-                          <InputLabel id='dataCompany-label'>Company</InputLabel>
-                          <Select
-                            required
-                            labelId='dataCompany-label'
-                            id='dataCompany'
-                            name='dataCompany'
-                            label='dataCompany'
-                            onChange={event => HandleOnChangeSE(event, 'com_id')}
-                            value={dataCompany.com_name}
-                          >
-                            {dataCompany?.map(row => (
-                              <MenuItem key={row.com_id} value={row.com_id}>
-                                {row.com_name}
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                    </Box>
+
                     <Box sx={{ mt: 6, display: 'flex', flexDirection: 'column' }}>
                       <Box sx={{ p: 4 }}>
                         <Typography>Teacher's comments</Typography>

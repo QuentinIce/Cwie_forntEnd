@@ -167,7 +167,7 @@ const LoginPage = () => {
                 fontSize: '1.5rem !important'
               }}
             >
-              Login(Establishment)!👋🏻
+              Login(Company)!👋🏻
             </Typography>
           </Box>
           <form noValidate autoComplete='off' onSubmit={handleSubmit}>

@@ -8,9 +8,7 @@ import { DataGrid } from '@mui/x-data-grid'
 
 export default function supervisionStudent_list() {
   const column = [
-    { field: 'stu_id', headerName: 'ID', width: 150 },
-    { field: 'stu_name', headerName: 'Name', width: 150 },
-    { field: 'stu_lname', headerName: 'Last Name', width: 150 },
+    { field: 'su_stuid', headerName: 'Name', width: 150 },
     { field: 'su_timein', headerName: 'Time in ', width: 150 },
     { field: 'su_timeout', headerName: 'Time Out', width: 150 },
     { field: 'su_holiday', headerName: 'weekly holiday', width: 150 },

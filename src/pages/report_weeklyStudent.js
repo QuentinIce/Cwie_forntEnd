@@ -20,7 +20,6 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 
 import { DailyReport, MonthlyReport, YearReport } from './DummyDay/dailyReport'
-import { DataGrid } from '@mui/x-data-grid'
 
 const Report_weeklyStudent = () => {
   const dropDown = {
@@ -35,8 +34,6 @@ const Report_weeklyStudent = () => {
   const [status, setStatus] = useState('')
   const [studentData, setStudentData] = useState('')
   const [resetData, setResetData] = useState({})
-  const [filterStudent, setFilterStudent] = useState({})
-  const [getStudentRow, setGetStudentRow] = useState([])
 
   useEffect(() => {
     axios
@@ -48,9 +45,6 @@ const Report_weeklyStudent = () => {
         setUsername(data.data.User)
         setStatus(data.data.stateRole)
       })
-    axios.get('http://localhost:3200/api/v1/getreport').then(res => {
-      setGetStudentRow(res.data.data)
-    })
   }, [])
 
   useEffect(() => {
@@ -59,55 +53,15 @@ const Report_weeklyStudent = () => {
         axios.post('http://localhost:3200/api/ReadStudent', { username: username }).then(data => {
           if (data.data.length > 0) {
             setStudentData(data.data[0])
-            const id = data.data[0].Id
-            const filteredObject = getStudentRow.filter(obj => obj.Id === id)
-            setFilterStudent(filteredObject)
           }
         })
       }
     }
-  }, [username, status, getStudentRow])
+  }, [username, status])
 
-  const [getRow, setGetRow] = useState('')
-  const [openRow, setOpenRow] = useState(false)
-  const handleOpenRow = () => setOpenRow(true)
-
-  const handleCloseRow = () => {
-    setOpenRow(false)
-  }
-
-  const columns = [
-    { field: 'stu_id', headerName: 'Student ID', width: 200 },
-    { field: 'stu_name', headerName: 'Student Name', width: 150 },
-    { field: 'stu_lname', headerName: 'Student Last Name', width: 200 },
-    { field: 're_hname', headerName: 'Topic', width: 200 },
-    { field: 're_details', headerName: 'Detail', width: 200 },
-    { field: 're_week', headerName: 'Week', width: 150 },
-    { field: 'com_name', headerName: 'Company', width: 150 },
-    {
-      field: 'SHOW',
-      headerName: 'SHOW',
-      width: 150,
-      renderCell: (
-        params //ทั้งหมดมี button edit
-      ) => (
-        <Button
-          variant='text'
-          onClick={() => {
-            handleOpenRow()
-            console.log(params.row)
-            setGetRow(params.row)
-          }}
-        >
-          Show
-        </Button>
-      )
-    }
-  ]
-
-  // useEffect(() => {
-  //   console.log('showname', studentData)
-  // }, [studentData])
+  useEffect(() => {
+    console.log('showname', studentData)
+  }, [studentData])
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -209,8 +163,8 @@ const Report_weeklyStudent = () => {
   }
 
   useEffect(() => {
-    console.log('report data', filterStudent)
-  }, [filterStudent])
+    console.log(reportData)
+  }, [reportData])
 
   return (
     <Box>
@@ -379,112 +333,7 @@ const Report_weeklyStudent = () => {
                   </Box>
                 </Box>
               </Modal>
-              <Box>
-                <DataGrid rows={filterStudent} columns={columns} getRowId={row => row.re_id} />
-              </Box>
-              <Modal
-                open={openRow}
-                onClose={handleCloseRow}
-                aria-labelledby='modal-modal-title'
-                aria-describedby='modal-modal-description'
-              >
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: 1000,
-                    bgcolor: 'background.paper',
-                    p: 4,
-                    borderRadius: 1
-                  }}
-                >
-                  <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
-                    <Typography id='modal-modal-title' variant='h6' component='h2' sx={{ mb: 6 }}>
-                      Report Student
-                    </Typography>
-                  </Box>
-
-                  <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-                    <Box sx={{ p: 6 }}>
-                      <Typography variant='h6'>Topic Report detail : </Typography>
-                    </Box>
-                    <Box>
-                      <Grid container spacing={5}>
-                        <Grid item xs={12}>
-                          <TextField
-                            fullWidth
-                            label='Report'
-                            placeholder='Report'
-                            multiline
-                            minRows={2}
-                            sx={{ width: 500 }}
-                            value={getRow.re_hname}
-                          />
-                        </Grid>
-                      </Grid>
-                    </Box>
-                    <Box sx={{ p: 6 }}>
-                      <Typography>Week : </Typography>
-                    </Box>
-                    <Box>
-                      <TextField
-                        fullWidth
-                        label='week'
-                        placeholder='1'
-                        sx={{ width: 100, p: 2 }}
-                        value={getRow.re_week}
-                      />
-                    </Box>
-                  </Box>
-                  <Box sx={{ p: 6 }}>
-                    <Box sx={{ mb: 6 }}>
-                      <Typography variant='h6'>Report detail</Typography>
-                    </Box>
-                    <form onSubmit={e => e.preventDefault()}>
-                      <Grid container spacing={5}>
-                        <Grid item xs={12}>
-                          <TextField
-                            fullWidth
-                            label='Report'
-                            placeholder='Report'
-                            multiline
-                            minRows={6}
-                            value={getRow.re_details}
-                          />
-                        </Grid>
-                      </Grid>
-                    </form>
-                  </Box>
-                  <Box sx={{ width: '100%', display: 'flex' }}>
-                    <Box sx={{ width: '32%', p: 4 }}>
-                      <Typography variant='h6'>Name Establishment:</Typography>
-                    </Box>
-                    <Box sx={{ width: '65%' }}>
-                      <Grid container spacing={5}>
-                        <Grid item xs={12}>
-                          <TextField
-                            fullWidth
-                            label='Name Establishment'
-                            placeholder='Establishment'
-                            value={getRow.com_name}
-                          />
-                        </Grid>
-                      </Grid>
-                    </Box>
-                  </Box>
-                  <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                    <Button
-                      onClick={() => {
-                        handleClose(false)
-                      }}
-                    >
-                      Cancel
-                    </Button>
-                  </Box>
-                </Box>
-              </Modal>
+              {/* <Box>{DataGrid Map filter id }</Box> */}
             </CardContent>
           </Card>
         </Grid>

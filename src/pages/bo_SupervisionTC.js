@@ -10,9 +10,6 @@ export default function bo_SupervisionTC() {
   const [dataRowSuperES, setDataRowSuperES] = useState('')
 
   const column = [
-    { field: 'tea_name', headerName: 'Teacher Name', width: 150 },
-    { field: 'tea_lname', headerName: 'Teacher Last Name', width: 150 },
-    { field: 'com_name', headerName: 'Company', width: 150 },
     { field: 'su_day', headerName: 'Day', width: 150 },
     { field: 'su_mon', headerName: 'Month ', width: 150 },
     { field: 'su_year', headerName: 'Year', width: 150 },
@@ -40,8 +37,8 @@ export default function bo_SupervisionTC() {
                   <Icon path={mdiAccountMultiple} size={6} />
                 </Box>
                 <Box>
-                  <Typography variant='h5'>Supervision Teacher Show</Typography>
-                  <Typography variant='subtitle1'>Supervision Teacher Show</Typography>
+                  <Typography variant='h5'>Supervision Teacher Management</Typography>
+                  <Typography variant='subtitle1'>Supervision Teacher Management</Typography>
                 </Box>
               </Box>
               <Box>

@@ -308,7 +308,7 @@ export default function bo_Establishment_manage() {
                 >
                   <Box sx={style}>
                     <Card>
-                      <CardHeader title='Insert Establishment' titleTypographyProps={{ variant: 'h6' }} />
+                      <CardHeader title='Insert Student' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>

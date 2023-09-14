@@ -3,18 +3,16 @@ import { Box, Button, Card, CardContent, TextField, Typography } from '@mui/mate
 import Icon from '@mdi/react'
 import { mdiChartBar } from '@mdi/js'
 import { Modal } from '@mui/base'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { DataGrid } from '@mui/x-data-grid'
-import Cookies from 'js-cookie'
 
-export default function Report_weeklyEstablishment() {
-  const [rowReportStd, setRowReportStd] = useState([])
+export default function report_weeklyEstablishment() {
+  const [rowReportStd, setRowReportStd] = useState('')
   const [getRow, setGetRow] = useState('')
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
-
   const handleClose = () => {
     setOpen(false)
   }
@@ -36,13 +34,11 @@ export default function Report_weeklyEstablishment() {
     { field: 'stu_id', headerName: 'Student ID', width: 200 },
     { field: 'stu_name', headerName: 'Student Name', width: 150 },
     { field: 'stu_lname', headerName: 'Student Last Name', width: 200 },
-    { field: 're_hname', headerName: 'Student Last Name', width: 200 },
-    { field: 're_details', headerName: 'Student Last Name', width: 200 },
     { field: 're_week', headerName: 'Week', width: 150 },
     { field: 'com_name', headerName: 'Company', width: 150 },
     {
-      field: 'SHOW',
-      headerName: 'SHOW',
+      field: 'Edit',
+      headerName: 'Edit',
       width: 150,
       renderCell: (
         params //ทั้งหมดมี button edit
@@ -61,45 +57,11 @@ export default function Report_weeklyEstablishment() {
     }
   ]
 
-  const jwtUsername = Cookies.get('._jwtUsername')
-  const jwtRole = Cookies.get('._jwtRole')
-  const [username, setUsername] = useState('')
-  const [status, setStatus] = useState('')
-  const [companyData, setCompanyData] = useState('')
-  const [filterCompany, setFilterCompany] = useState('')
-
   useEffect(() => {
-    axios
-      .post('http://localhost:3200/api/verify_authen', {
-        token: jwtUsername,
-        tokenRole: jwtRole
-      })
-      .then(data => {
-        setUsername(data.data.User)
-        setStatus(data.data.stateRole)
-      })
     axios.get('http://localhost:3200/api/v1/getreport').then(res => {
       setRowReportStd(res.data.data)
     })
   }, [])
-
-  useEffect(() => {
-    if (status === 'สถานประกอบการ') {
-      axios.post('http://localhost:3200/api/Read_Company', { username: username }).then(data => {
-        if (data.data.length > 0) {
-          setCompanyData(data.data[0])
-          const id = data.data[0].com_id
-          const filteredObject = rowReportStd.filter(obj => obj.com_id === id)
-          console.log('filter', data.data[0].com_id)
-          setFilterCompany(filteredObject)
-        }
-      })
-    }
-  }, [username, status, rowReportStd])
-
-  if (filterCompany.length === 0) {
-    return <Box>Loading</Box>
-  }
 
   return (
     <Box>
@@ -126,7 +88,7 @@ export default function Report_weeklyEstablishment() {
               <Box sx={style}>
                 <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
                   <Typography id='modal-modal-title' variant='h6' component='h2' sx={{ mb: 6 }}>
-                    Report Student
+                    Add New Report Weekly
                   </Typography>
                 </Box>
 
@@ -210,7 +172,7 @@ export default function Report_weeklyEstablishment() {
               </Box>
             </Modal>
             <Box>
-              <DataGrid rows={filterCompany} columns={columns} getRowId={row => row.re_id} />
+              <DataGrid rows={rowReportStd} columns={columns} getRowId={row => row.re_id} />
             </Box>
           </Card>
         </Grid>

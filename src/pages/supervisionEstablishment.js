@@ -5,27 +5,18 @@ import { mdiAccountMultiple } from '@mdi/js'
 import { useEffect, useState } from 'react'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import axios from 'axios'
-import Cookies from 'js-cookie'
 
-export default function SupervisionEstabishment() {
-  const [value, setValue] = useState('1')
-  const [companyData, setCompanyData] = useState('')
+export default function supervisionEstabishment() {
+  const intialSE = {
+    su_need: '',
+    su_time: '',
+    su_detail: '',
+    su_coor: '',
+    su_date: '',
+    su_sugges: ''
+  }
 
-  useEffect(() => {
-    const dataSetup = {
-      su_need: '',
-      su_time: '',
-      su_detail: '',
-      su_coor: '',
-      su_date: '',
-      su_sugges: '',
-      com_id: companyData.com_id
-    }
-    setDataSupervisionEs(dataSetup)
-    setResetData(dataSetup)
-  }, [companyData])
-
-  const [dataSupervisionEs, setDataSupervisionEs] = useState({})
+  const [dataSupervisionEs, setDataSupervisionEs] = useState(intialSE)
 
   const colorSE = {
     su_need: false,
@@ -38,33 +29,7 @@ export default function SupervisionEstabishment() {
 
   const [colorChangeES, setColorChangeES] = useState(colorSE)
 
-  const jwtUsername = Cookies.get('._jwtUsername')
-  const jwtRole = Cookies.get('._jwtRole')
-  const [username, setUsername] = useState('')
-  const [status, setStatus] = useState('')
-  const [resetData, setResetData] = useState({})
-
-  useEffect(() => {
-    axios
-      .post('http://localhost:3200/api/verify_authen', {
-        token: jwtUsername,
-        tokenRole: jwtRole
-      })
-      .then(data => {
-        setUsername(data.data.User)
-        setStatus(data.data.stateRole)
-      })
-  }, [])
-
-  useEffect(() => {
-    if (status === 'สถานประกอบการ') {
-      axios.post('http://localhost:3200/api/Read_Company', { username: username }).then(data => {
-        if (data.data.length > 0) {
-          setCompanyData(data.data[0])
-        }
-      })
-    }
-  }, [username, status])
+  const [value, setValue] = useState('1')
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -127,8 +92,8 @@ export default function SupervisionEstabishment() {
         .post('http://localhost:3200/api/v1/supervisioncominsert', dataSupervisionEs)
         .then(res => {
           console.log(res)
-          window.location.reload()
           setDataSupervisionEs(intialSE)
+          window.location.reload()
         })
         .catch(err => {
           console.log(err)

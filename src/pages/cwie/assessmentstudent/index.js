@@ -30,7 +30,6 @@ const SurveyForm = () => {
     totalScore: 0
   })
   const [sumfi, setSumfi] = useState(0)
-
   const [values, setValues] = useState({
     text1: '',
     text2: ''
