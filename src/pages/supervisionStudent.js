@@ -322,7 +322,7 @@ export default function SupervisionStudent() {
                         <Grid item xs={6}>
                           <TextField
                             fullWidth
-                            label='Time supervision'
+                            label='ครั้งที่ประเมิน 1 , 2'
                             placeholder='1,2'
                             onChange={event => HandleChangeSt(event, 'su_time')}
                             error={colorChangeSt.su_time}

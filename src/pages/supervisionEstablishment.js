@@ -223,7 +223,7 @@ export default function SupervisionEstabishment() {
                         <Grid item xs={6}>
                           <TextField
                             fullWidth
-                            label='Time'
+                            label='ครั้งที่ประเมิน 1 , 2'
                             placeholder='1'
                             onChange={event => HandleOnChangeSE(event, 'su_time')}
                             error={colorChangeES.su_time}

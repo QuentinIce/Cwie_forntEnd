@@ -334,8 +334,7 @@ export default function SupervisionTeacher() {
                         <Grid item xs={6}>
                           <TextField
                             fullWidth
-                            label='Time'
-                            placeholder='08.00'
+                            label='ครั้งที่ประเมิน 1 , 2'
                             onChange={event => HandleOnChangeSE(event, 'su_time')}
                             error={colorSupervision.su_time}
                             value={dataSupervisionTc.su_time}
