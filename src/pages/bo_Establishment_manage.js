@@ -554,13 +554,27 @@ export default function bo_Establishment_manage() {
                   aria-labelledby='modal-modal-title'
                   aria-describedby='modal-modal-description'
                 >
-                  <Box sx={style}>
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: '30%',
+                      bgcolor: 'background.paper',
+                      border: '2px solid #000',
+                      boxShadow: 24,
+                      p: 4,
+                      borderRadius: 2
+                    }}
+                  >
                     <Card>
                       <CardHeader title='Delete' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Grid container spacing={4}>
                             <Grid item xs={6}>
+                              <Typography variant='h6'>Confirm Delete Data</Typography>
                               <Box
                                 sx={{
                                   gap: 5,

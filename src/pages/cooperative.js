@@ -26,6 +26,12 @@ const dummy = [
   },
   {
     img: 'https://comtel.co.za/wp-content/uploads/2022/07/The_comtel_logo.png'
+  },
+  {
+    img: ''
+  },
+  {
+    img: ''
   }
 ]
 
