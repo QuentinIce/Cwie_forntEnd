@@ -148,11 +148,7 @@ const Navigation = () => {
         icon: ChevronDoubleRight,
         path: '/supervisionStudent_list'
       },
-      {
-        title: 'Supervision Establishment',
-        icon: ChevronDoubleRight,
-        path: '/supervisionEstablishment'
-      },
+
       {
         sectionTitle: 'Back Office'
       },
