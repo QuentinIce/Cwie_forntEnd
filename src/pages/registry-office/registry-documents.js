@@ -87,8 +87,6 @@ const TeacherDocumentPage = ({ semesterYear, documentsCompany }) => {
         return // Stop execution if it's not a PDF
       }
 
-      console.log('file: ', file)
-
       // ? รอดึงข้อมูลนักศึกษา
       const uploadFile = {
         student_id: id,
@@ -110,7 +108,6 @@ const TeacherDocumentPage = ({ semesterYear, documentsCompany }) => {
           }
         }
       )
-      console.log('resApiBackend: ', resApiBackend)
 
       // ? ต้องรัน server.js ก่อน
       const formData = new FormData()
@@ -122,7 +119,6 @@ const TeacherDocumentPage = ({ semesterYear, documentsCompany }) => {
         method: 'PUT',
         body: formData
       })
-      console.log('resApiFrontend: ', resApiFrontend)
 
       if (resApiFrontend.status === 200 && resApiBackend.status === 200) {
         Swal.fire({
@@ -154,8 +150,6 @@ const TeacherDocumentPage = ({ semesterYear, documentsCompany }) => {
   const handleDownloadFile = async (stu_code, doc_type) => {
     try {
       const fileName = `${stu_code}_Document_${doc_type}`
-
-      console.log('fileName: ', fileName)
 
       // ** API Frontend
       // Send a GET request to the download URL

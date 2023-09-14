@@ -45,7 +45,6 @@ export default function report_weeklyTeacher() {
           variant='text'
           onClick={() => {
             handleOpenReStd()
-            console.log(params.row)
             setGetRow(params.row)
           }}
         >

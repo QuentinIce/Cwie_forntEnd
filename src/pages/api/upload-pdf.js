@@ -28,8 +28,6 @@ export default async (req, res) => {
 
       const newPath = `public/documents/${newName}.pdf`
 
-      console.log('Full path:', path.resolve(newPath))
-
       fs.rename(filePath, newPath, err => {
         if (err) {
           console.error('เกิดข้อผิดพลาดในการย้ายไฟล์:', err)

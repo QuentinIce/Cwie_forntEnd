@@ -90,7 +90,6 @@ const LoginPage = () => {
         password: values.password
       })
       .then(data => {
-        console.log('jwt', data)
         if (data.data.statusCode === 404) {
           setSuccess(false)
         } else {

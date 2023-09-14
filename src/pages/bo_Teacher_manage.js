@@ -100,7 +100,6 @@ export default function bo_Teacher_manage() {
           onClick={() => {
             setDataTeacher(params.row)
             handleOpenEdit()
-            console.log(params.row)
           }}
         >
           Edit
@@ -119,7 +118,6 @@ export default function bo_Teacher_manage() {
           onClick={() => {
             setGetIdDelTc(params.id)
             handleOpenDel()
-            console.log(params.row)
           }}
         >
           Del
@@ -202,36 +200,26 @@ export default function bo_Teacher_manage() {
       axios
         .post('http://localhost:3200/api/v1/insertteacher', dataTeacher)
         .then(res => {
-          console.log(res)
           window.location.reload()
           handleClose()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataTeacher.tea_name !== '') {
-      console.log('tea_name ไม่ว่าง')
     } else {
-      console.log('tea_name ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_name: true }))
     }
     if (dataTeacher.tea_lname !== '') {
-      console.log('tea_lname ไม่ว่าง')
     } else {
-      console.log('tea_lname ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_lname: true }))
     }
     if (dataTeacher.tea_status !== '') {
-      console.log('tea_status ไม่ว่าง')
     } else {
-      console.log('tea_status ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_status: true }))
     }
     if (dataTeacher.tea_tel !== '') {
-      console.log('tea_tel ไม่ว่าง')
     } else {
-      console.log('tea_tel ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_tel: true }))
     }
   }
@@ -257,47 +245,35 @@ export default function bo_Teacher_manage() {
           handleCloseEdit()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataTeacher.tea_name !== '') {
-      console.log('tea_name ไม่ว่าง')
     } else {
-      console.log('tea_name ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_name: true }))
     }
     if (dataTeacher.tea_lname !== '') {
-      console.log('tea_lname ไม่ว่าง')
     } else {
-      console.log('tea_lname ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_lname: true }))
     }
     if (dataTeacher.tea_status !== '') {
-      console.log('tea_status ไม่ว่าง')
     } else {
-      console.log('tea_status ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_status: true }))
     }
     if (dataTeacher.tea_tel !== '') {
-      console.log('tea_tel ไม่ว่าง')
     } else {
-      console.log('tea_tel ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_tel: true }))
     }
   }
 
   const HandleDelTc = id => {
     const onDelTc = { tea_id: id }
-    console.log('sss', onDelTc)
     axios
       .delete('http://localhost:3200/api/v1/teacherdelete', { data: onDelTc })
       .then(res => {
-        console.log(res)
         window.location.reload()
         handleCloseDel()
       })
       .catch(err => {
-        console.log(err)
       })
   }
 

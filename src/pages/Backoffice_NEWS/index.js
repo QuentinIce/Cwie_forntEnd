@@ -190,7 +190,6 @@ const BackOfficeNEWS = () => {
                   <TextField
                     fullWidth
                     label='Detail'
-                    fullWidth
                     multiline
                     minRows={8}
                     onChange={event => HandleOnChangeNEWS(event, 'new_details')}

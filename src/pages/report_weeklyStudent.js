@@ -59,10 +59,6 @@ const Report_weeklyStudent = () => {
     }
   }, [username, status])
 
-  useEffect(() => {
-    console.log('showname', studentData)
-  }, [studentData])
-
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
 
@@ -144,7 +140,6 @@ const Report_weeklyStudent = () => {
       }))
     }
     axios.post('http://localhost:3200/api/v1/insertreport', reportData).then(res => {
-      console.log(res)
       window.location.reload()
       handleClose()
       setReportData(resetData)
@@ -161,10 +156,6 @@ const Report_weeklyStudent = () => {
     p: 4,
     borderRadius: 1
   }
-
-  useEffect(() => {
-    console.log(reportData)
-  }, [reportData])
 
   return (
     <Box>

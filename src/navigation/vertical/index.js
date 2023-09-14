@@ -38,8 +38,6 @@ const Navigation = () => {
       })
   }, [])
 
-  console.log('ss', status)
-
   let menuItems = [
     {
       title: 'Home Page',

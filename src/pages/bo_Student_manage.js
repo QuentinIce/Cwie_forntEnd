@@ -241,43 +241,30 @@ const bo_Student_manage = () => {
           setDataSt(intial)
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataSt.stu_id !== '') {
-      console.log('std_id ไม่ว่าง')
     } else {
-      console.log('std_id ว่าง')
       setColoChange(pre => ({ ...pre, stu_id: true }))
     }
     if (dataSt.stu_name !== '') {
-      console.log('std_name ไม่ว่าง')
     } else {
-      console.log('stu_name ว่าง')
       setColoChange(pre => ({ ...pre, stu_name: true }))
     }
     if (dataSt.stu_lname !== '') {
-      console.log('stu_lname ไม่ว่าง')
     } else {
-      console.log('stu_lname ว่าง')
       setColoChange(pre => ({ ...pre, stu_lname: true }))
     }
     if (dataSt.stu_status !== '') {
-      console.log('stu_status ไม่ว่าง')
     } else {
-      console.log('stu_status ว่าง')
       setColoChange(pre => ({ ...pre, stu_status: true }))
     }
     if (dataSt.stu_sex !== '') {
-      console.log('stu_sex ไม่ว่าง')
     } else {
-      console.log('stu_sex ว่าง')
       setColoChange(pre => ({ ...pre, stu_sex: true }))
     }
     if (dataSt.stu_rmail !== '') {
-      console.log('stu_rmail ไม่ว่าง')
     } else {
-      console.log('stu_rmail ว่าง')
       setColoChange(pre => ({ ...pre, stu_rmail: true }))
     }
     fetchStudentData()
@@ -307,43 +294,30 @@ const bo_Student_manage = () => {
           setDataSt(intial)
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataSt.stu_id !== '') {
-      console.log('std_id ไม่ว่าง')
     } else {
-      console.log('std_id ว่าง')
       setColoChange(pre => ({ ...pre, stu_id: true }))
     }
     if (dataSt.stu_name !== '') {
-      console.log('std_name ไม่ว่าง')
     } else {
-      console.log('stu_name ว่าง')
       setColoChange(pre => ({ ...pre, stu_name: true }))
     }
     if (dataSt.stu_lname !== '') {
-      console.log('stu_lname ไม่ว่าง')
     } else {
-      console.log('stu_lname ว่าง')
       setColoChange(pre => ({ ...pre, stu_lname: true }))
     }
     if (dataSt.stu_status !== '') {
-      console.log('stu_status ไม่ว่าง')
     } else {
-      console.log('stu_status ว่าง')
       setColoChange(pre => ({ ...pre, stu_status: true }))
     }
     if (dataSt.stu_sex !== '') {
-      console.log('stu_sex ไม่ว่าง')
     } else {
-      console.log('stu_sex ว่าง')
       setColoChange(pre => ({ ...pre, stu_sex: true }))
     }
     if (dataSt.stu_rmail !== '') {
-      console.log('stu_rmail ไม่ว่าง')
     } else {
-      console.log('stu_rmail ว่าง')
       setColoChange(pre => ({ ...pre, stu_rmail: true }))
     }
     fetchStudentData()
@@ -359,7 +333,6 @@ const bo_Student_manage = () => {
         handleClosDelSt()
       })
       .catch(err => {
-        console.log(err)
       })
   }
 

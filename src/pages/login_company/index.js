@@ -86,8 +86,8 @@ const LoginPage = () => {
 
   const submitForm = () => {
     // ตรวจสอบ API authenticationtea
-    console.log('username', values.email)
-    console.log('password', values.password)
+    // console.log('username', values.email)
+    // console.log('password', values.password)
 
     axios
       .post('http://localhost:3200/api/authenticationcom', {
