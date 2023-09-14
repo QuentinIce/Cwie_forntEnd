@@ -72,15 +72,11 @@ const BackOfficeNEWS = () => {
         })
     }
     if (dataNews.new_name !== '') {
-      console.log('new_name ไม่ว่าง')
     } else {
-      console.log('new_name ว่าง')
       setColoChange(pre => ({ ...pre, new_name: true }))
     }
     if (dataNews.new_details !== '') {
-      console.log('new_details ไม่ว่าง')
     } else {
-      console.log('new_details ว่าง')
       setColoChange(pre => ({ ...pre, new_details: true }))
     }
   }
@@ -97,10 +93,6 @@ const BackOfficeNEWS = () => {
         console.log(err)
       })
   }
-
-  useEffect(() => {
-    console.log(dataNews)
-  }, [dataNews])
 
   const style = {
     position: 'absolute',
@@ -130,7 +122,6 @@ const BackOfficeNEWS = () => {
           onClick={() => {
             setGetID(params.id)
             handleOpenDel()
-            console.log(params.row)
           }}
         >
           Del
