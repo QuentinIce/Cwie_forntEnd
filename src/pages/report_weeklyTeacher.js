@@ -35,8 +35,8 @@ export default function report_weeklyTeacher() {
     { field: 're_week', headerName: 'Week', width: 150 },
     { field: 'com_name', headerName: 'Company', width: 150 },
     {
-      field: 'SHOW',
-      headerName: 'SHOW',
+      field: 'Edit',
+      headerName: 'Edit',
       width: 150,
       renderCell: (
         params //ทั้งหมดมี button edit
@@ -45,7 +45,6 @@ export default function report_weeklyTeacher() {
           variant='text'
           onClick={() => {
             handleOpenReStd()
-            console.log(params.row)
             setGetRow(params.row)
           }}
         >

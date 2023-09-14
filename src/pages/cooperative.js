@@ -26,12 +26,6 @@ const dummy = [
   },
   {
     img: 'https://comtel.co.za/wp-content/uploads/2022/07/The_comtel_logo.png'
-  },
-  {
-    img: ''
-  },
-  {
-    img: ''
   }
 ]
 
@@ -50,7 +44,6 @@ export default function cooperative() {
   const handleClose = () => setOpen(false)
 
   const HandleRowAndOpen = data => {
-    console.log(data)
     setDataRow(data)
     setOpen(true)
   }

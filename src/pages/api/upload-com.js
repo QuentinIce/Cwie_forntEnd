@@ -41,9 +41,6 @@ export default async (req, res) => {
       const oldPath = req.file.path
       const newPath = `public/documents-company/${newName}.pdf`
 
-      console.log('oldPath: ', oldPath)
-      console.log('newPath: ', newPath)
-
       fs.rename(oldPath, newPath, function (err) {
         if (err) {
           return res.status(500).json({ error: 'Could not rename file', details: err.message })

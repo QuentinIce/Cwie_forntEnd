@@ -5,27 +5,18 @@ import { mdiAccountMultiple } from '@mdi/js'
 import { useEffect, useState } from 'react'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import axios from 'axios'
-import Cookies from 'js-cookie'
 
-export default function SupervisionEstabishment() {
-  const [value, setValue] = useState('1')
-  const [companyData, setCompanyData] = useState('')
+export default function supervisionEstabishment() {
+  const intialSE = {
+    su_need: '',
+    su_time: '',
+    su_detail: '',
+    su_coor: '',
+    su_date: '',
+    su_sugges: ''
+  }
 
-  useEffect(() => {
-    const dataSetup = {
-      su_need: '',
-      su_time: '',
-      su_detail: '',
-      su_coor: '',
-      su_date: '',
-      su_sugges: '',
-      com_id: companyData.com_id
-    }
-    setDataSupervisionEs(dataSetup)
-    setResetData(dataSetup)
-  }, [companyData])
-
-  const [dataSupervisionEs, setDataSupervisionEs] = useState({})
+  const [dataSupervisionEs, setDataSupervisionEs] = useState(intialSE)
 
   const colorSE = {
     su_need: false,
@@ -38,33 +29,7 @@ export default function SupervisionEstabishment() {
 
   const [colorChangeES, setColorChangeES] = useState(colorSE)
 
-  const jwtUsername = Cookies.get('._jwtUsername')
-  const jwtRole = Cookies.get('._jwtRole')
-  const [username, setUsername] = useState('')
-  const [status, setStatus] = useState('')
-  const [resetData, setResetData] = useState({})
-
-  useEffect(() => {
-    axios
-      .post('http://localhost:3200/api/verify_authen', {
-        token: jwtUsername,
-        tokenRole: jwtRole
-      })
-      .then(data => {
-        setUsername(data.data.User)
-        setStatus(data.data.stateRole)
-      })
-  }, [])
-
-  useEffect(() => {
-    if (status === 'สถานประกอบการ') {
-      axios.post('http://localhost:3200/api/Read_Company', { username: username }).then(data => {
-        if (data.data.length > 0) {
-          setCompanyData(data.data[0])
-        }
-      })
-    }
-  }, [username, status])
+  const [value, setValue] = useState('1')
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -126,55 +91,38 @@ export default function SupervisionEstabishment() {
       axios
         .post('http://localhost:3200/api/v1/supervisioncominsert', dataSupervisionEs)
         .then(res => {
-          console.log(res)
-          window.location.reload()
           setDataSupervisionEs(intialSE)
+          window.location.reload()
         })
         .catch(err => {
           console.log(err)
         })
     }
     if (dataSupervisionEs.su_need !== '') {
-      console.log('su_need ไม่ว่าง')
     } else {
-      console.log('su_need ว่าง')
       setColorChangeES(pre => ({ ...pre, su_need: true }))
     }
     if (dataSupervisionEs.su_time !== '') {
-      console.log('su_time ไม่ว่าง')
     } else {
-      console.log('su_time ว่าง')
       setColorChangeES(pre => ({ ...pre, su_time: true }))
     }
     if (dataSupervisionEs.su_detail !== '') {
-      console.log('su_detail ไม่ว่าง')
     } else {
-      console.log('su_detail ว่าง')
       setColorChangeES(pre => ({ ...pre, su_detail: true }))
     }
     if (dataSupervisionEs.su_date !== '') {
-      console.log('su_date ไม่ว่าง')
     } else {
-      console.log('su_date ว่าง')
       setColorChangeES(pre => ({ ...pre, su_date: true }))
     }
     if (dataSupervisionEs.su_coor !== '') {
-      console.log('su_coor ไม่ว่าง')
     } else {
-      console.log('su_coor ว่าง')
       setColorChangeES(pre => ({ ...pre, su_coor: true }))
     }
     if (dataSupervisionEs.su_sugges !== '') {
-      console.log('su_sugges ไม่ว่าง')
     } else {
-      console.log('su_sugges ว่าง')
       setColorChangeES(pre => ({ ...pre, su_sugges: true }))
     }
   }
-
-  useEffect(() => {
-    console.log(dataSupervisionEs)
-  }, [dataSupervisionEs])
 
   return (
     <Box>
@@ -223,7 +171,7 @@ export default function SupervisionEstabishment() {
                         <Grid item xs={6}>
                           <TextField
                             fullWidth
-                            label='ครั้งที่ประเมิน 1 , 2'
+                            label='Time'
                             placeholder='1'
                             onChange={event => HandleOnChangeSE(event, 'su_time')}
                             error={colorChangeES.su_time}

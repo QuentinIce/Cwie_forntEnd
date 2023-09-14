@@ -105,7 +105,7 @@ export default function news() {
               </Box>
               <Box sx={{ display: 'flex' }}>
                 <Typography sx={{ m: 2 }} variant='h6'>
-                  รายละเอียดขาว :
+                  รายละเอียดขาว
                 </Typography>
                 <Typography sx={{ m: 2 }} variant='h6'>
                   {dataNewsRow.new_details}

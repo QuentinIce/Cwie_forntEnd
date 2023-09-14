@@ -44,13 +44,6 @@ const SurveyForm = () => {
     // Handle form submission, and you can access the selected values as costnSum1_2.es_id1 and costnSum1_2.es_id2
   }
 
-  // useEffect(() => {
-  //   console.log(costnSum1_2)
-  //   console.log(sum_12);
-  // }, [handleSubmit])
-
-  // console.log(costnSum3_7)
-
   useEffect(() => {
     // Perform the addition and store the result in sum_12
     const es_id1Value = parseInt(costnSum1_2.es_id1) || 0;

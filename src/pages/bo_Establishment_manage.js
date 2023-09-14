@@ -79,7 +79,6 @@ export default function Bo_Establishment_manage() {
           onClick={() => {
             setDataCompany(params.row)
             handleOpenEdit()
-            console.log(params.row)
           }}
         >
           Edit
@@ -108,16 +107,13 @@ export default function Bo_Establishment_manage() {
 
   const HandleDelComp = id => {
     const onDel = { com_id: id }
-    console.log('id', onDel)
     axios
       .delete('http://localhost:3200/api/v1/companydelete', { data: onDel })
       .then(res => {
-        console.log(res)
         window.location.reload()
         handleCloseDel()
       })
       .catch(err => {
-        console.log(err)
       })
   }
 
@@ -180,42 +176,30 @@ export default function Bo_Establishment_manage() {
       axios
         .post('http://localhost:3200/api/v1/companyinsert', dataCompany)
         .then(res => {
-          console.log(res)
           window.location.reload()
           handleClose()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataCompany.com_name !== '') {
-      console.log('com_name ไม่ว่าง')
     } else {
-      console.log('com_name ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_name: true }))
     }
     if (dataCompany.com_type !== '') {
-      console.log('com_type ไม่ว่าง')
     } else {
-      console.log('com_type ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_type: true }))
     }
     if (dataCompany.com_add !== '') {
-      console.log('com_add ไม่ว่าง')
     } else {
-      console.log('com_add ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_add: true }))
     }
     if (dataCompany.com_province !== '') {
-      console.log('com_province ไม่ว่าง')
     } else {
-      console.log('com_province ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_province: true }))
     }
     if (dataCompany.com_contact !== '') {
-      console.log('com_contact ไม่ว่าง')
     } else {
-      console.log('com_contact ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_contact: true }))
     }
   }
@@ -227,7 +211,6 @@ export default function Bo_Establishment_manage() {
   }, [])
 
   useEffect(() => {
-    console.log(dataCompany)
   }, [dataCompany])
 
   const HandleEditComp = () => {
@@ -245,42 +228,30 @@ export default function Bo_Establishment_manage() {
       axios
         .post('http://localhost:3200/api/v1/companyupdate', dataCompany)
         .then(res => {
-          console.log(res)
           window.location.reload()
           handleClose()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataCompany.com_name !== '') {
-      console.log('com_name ไม่ว่าง')
     } else {
-      console.log('com_name ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_name: true }))
     }
     if (dataCompany.com_type !== '') {
-      console.log('com_type ไม่ว่าง')
     } else {
-      console.log('com_type ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_type: true }))
     }
     if (dataCompany.com_add !== '') {
-      console.log('com_add ไม่ว่าง')
     } else {
-      console.log('com_add ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_add: true }))
     }
     if (dataCompany.com_province !== '') {
-      console.log('com_province ไม่ว่าง')
     } else {
-      console.log('com_province ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_province: true }))
     }
     if (dataCompany.com_contact !== '') {
-      console.log('com_contact ไม่ว่าง')
     } else {
-      console.log('com_contact ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_contact: true }))
     }
   }
@@ -310,7 +281,7 @@ export default function Bo_Establishment_manage() {
                 >
                   <Box sx={style}>
                     <Card>
-                      <CardHeader title='Insert Establishment' titleTypographyProps={{ variant: 'h6' }} />
+                      <CardHeader title='Insert Student' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', mb: 6 }}>
@@ -556,27 +527,13 @@ export default function Bo_Establishment_manage() {
                   aria-labelledby='modal-modal-title'
                   aria-describedby='modal-modal-description'
                 >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      width: '30%',
-                      bgcolor: 'background.paper',
-                      border: '2px solid #000',
-                      boxShadow: 24,
-                      p: 4,
-                      borderRadius: 2
-                    }}
-                  >
+                  <Box sx={style}>
                     <Card>
                       <CardHeader title='Delete' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Grid container spacing={4}>
                             <Grid item xs={6}>
-                              <Typography variant='h6'>Confirm Delete Data</Typography>
                               <Box
                                 sx={{
                                   gap: 5,

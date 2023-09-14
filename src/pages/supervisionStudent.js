@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid'
-import { Box, Button, Card, CardContent, Typography, Select, FormControl, InputLabel, MenuItem } from '@mui/material'
+import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import CardMedia from '@mui/material/CardMedia'
 import { useEffect, useState } from 'react'
 import Icon from '@mdi/react'
@@ -10,72 +10,26 @@ import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TextField from '@mui/material/TextField'
 import axios from 'axios'
-import Cookies from 'js-cookie'
 
-export default function SupervisionStudent() {
+export default function supervisionStudent() {
   const [value, setValue] = useState('1')
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
-  const jwtUsername = Cookies.get('._jwtUsername')
-  const jwtRole = Cookies.get('._jwtRole')
-  const [username, setUsername] = useState('')
-  const [status, setStatus] = useState('')
-  const [studentData, setStudentData] = useState('')
-  const [resetData, setResetData] = useState({})
+  const intialSt = {
+    su_name: '',
+    su_lname: '',
+    su_timein: '',
+    su_timeout: '',
+    su_holiday: '',
+    su_time: '',
+    su_work: '',
+    su_sugges: ''
+  }
 
-  useEffect(() => {
-    axios
-      .post('http://localhost:3200/api/verify_authen', {
-        token: jwtUsername,
-        tokenRole: jwtRole
-      })
-      .then(data => {
-        setUsername(data.data.User)
-        setStatus(data.data.stateRole)
-      })
-  }, [])
-
-  const [dataCompany, setDataCompany] = useState([])
-
-  useEffect(() => {
-    axios.get('http://localhost:3200/api/v1/companys').then(res => {
-      setDataCompany(res.data.data)
-    })
-  }, [])
-
-  useEffect(() => {
-    if (username !== undefined && status !== undefined) {
-      if (status === 'นักศึกษา') {
-        axios.post('http://localhost:3200/api/ReadStudent', { username: username }).then(data => {
-          if (data.data.length > 0) {
-            setStudentData(data.data[0])
-          }
-        })
-      }
-    }
-  }, [username, status])
-
-  useEffect(() => {
-    const dataSetup = {
-      su_name: '',
-      su_lname: '',
-      su_timein: '',
-      su_timeout: '',
-      su_holiday: '',
-      su_time: '',
-      su_work: '',
-      su_sugges: '',
-      Id: studentData.Id,
-      com_id: ''
-    }
-    setDataSt(dataSetup)
-    setResetData(dataSetup)
-  }, [studentData])
-
-  const [dataSt, setDataSt] = useState({})
+  const [dataSt, setDataSt] = useState(intialSt)
 
   const colorSt = {
     su_name: false,
@@ -85,8 +39,7 @@ export default function SupervisionStudent() {
     su_holiday: false,
     su_time: false,
     su_work: false,
-    su_sugges: false,
-    com_id: false
+    su_sugges: false
   }
 
   const [colorChangeSt, setColorChangeSt] = useState(colorSt)
@@ -141,12 +94,6 @@ export default function SupervisionStudent() {
         setColorChangeSt(pre => ({ ...pre, su_sugges: false }))
       }
       setDataSt(pre => ({ ...pre, su_sugges: newStr }))
-    } else if (type === 'com_id') {
-      const newStr = event.target.value
-      if (dataSt.com_id !== '') {
-        setColorChangeSt(pre => ({ ...pre, com_id: false }))
-      }
-      setDataSt(pre => ({ ...pre, com_id: newStr }))
     }
   }
 
@@ -322,7 +269,7 @@ export default function SupervisionStudent() {
                         <Grid item xs={6}>
                           <TextField
                             fullWidth
-                            label='ครั้งที่ประเมิน 1 , 2'
+                            label='Time supervision'
                             placeholder='1,2'
                             onChange={event => HandleChangeSt(event, 'su_time')}
                             error={colorChangeSt.su_time}
@@ -333,35 +280,11 @@ export default function SupervisionStudent() {
                     </Box>
                     <Box>
                       <Box>
-                        <Grid item xs={12} sm={6}>
-                          <Typography variant='h6' sx={{ p: 2 }}>
-                            Company
-                          </Typography>
-                          <FormControl variant='outlined' fullWidth sx={{ mb: 2 }}>
-                            <InputLabel id='dataCompany-label'>Company</InputLabel>
-                            <Select
-                              required
-                              labelId='dataCompany-label'
-                              id='dataCompany'
-                              name='dataCompany'
-                              label='dataCompany'
-                              onChange={event => HandleChangeSt(event, 'com_id')}
-                              value={dataCompany.com_name}
-                            >
-                              {dataCompany?.map(row => (
-                                <MenuItem key={row.com_id} value={row.com_id}>
-                                  {row.com_name}
-                                </MenuItem>
-                              ))}
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                      </Box>
-
-                      <Box>
                         <Typography variant='h6' sx={{ mt: 5, p: 3 }}>
                           Nature of work
                         </Typography>
+                      </Box>
+                      <Box>
                         <TextField
                           fullWidth
                           label='Nature of work'

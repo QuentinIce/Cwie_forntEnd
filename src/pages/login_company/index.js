@@ -86,8 +86,8 @@ const LoginPage = () => {
 
   const submitForm = () => {
     // ตรวจสอบ API authenticationtea
-    console.log('username', values.email)
-    console.log('password', values.password)
+    // console.log('username', values.email)
+    // console.log('password', values.password)
 
     axios
       .post('http://localhost:3200/api/authenticationcom', {
@@ -167,7 +167,7 @@ const LoginPage = () => {
                 fontSize: '1.5rem !important'
               }}
             >
-              Login(Establishment)!👋🏻
+              Login(Company)!👋🏻
             </Typography>
           </Box>
           <form noValidate autoComplete='off' onSubmit={handleSubmit}>

@@ -100,7 +100,6 @@ export default function bo_Teacher_manage() {
           onClick={() => {
             setDataTeacher(params.row)
             handleOpenEdit()
-            console.log(params.row)
           }}
         >
           Edit
@@ -119,7 +118,6 @@ export default function bo_Teacher_manage() {
           onClick={() => {
             setGetIdDelTc(params.id)
             handleOpenDel()
-            console.log(params.row)
           }}
         >
           Del
@@ -202,36 +200,26 @@ export default function bo_Teacher_manage() {
       axios
         .post('http://localhost:3200/api/v1/insertteacher', dataTeacher)
         .then(res => {
-          console.log(res)
           window.location.reload()
           handleClose()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataTeacher.tea_name !== '') {
-      console.log('tea_name ไม่ว่าง')
     } else {
-      console.log('tea_name ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_name: true }))
     }
     if (dataTeacher.tea_lname !== '') {
-      console.log('tea_lname ไม่ว่าง')
     } else {
-      console.log('tea_lname ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_lname: true }))
     }
     if (dataTeacher.tea_status !== '') {
-      console.log('tea_status ไม่ว่าง')
     } else {
-      console.log('tea_status ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_status: true }))
     }
     if (dataTeacher.tea_tel !== '') {
-      console.log('tea_tel ไม่ว่าง')
     } else {
-      console.log('tea_tel ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_tel: true }))
     }
   }
@@ -257,47 +245,35 @@ export default function bo_Teacher_manage() {
           handleCloseEdit()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataTeacher.tea_name !== '') {
-      console.log('tea_name ไม่ว่าง')
     } else {
-      console.log('tea_name ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_name: true }))
     }
     if (dataTeacher.tea_lname !== '') {
-      console.log('tea_lname ไม่ว่าง')
     } else {
-      console.log('tea_lname ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_lname: true }))
     }
     if (dataTeacher.tea_status !== '') {
-      console.log('tea_status ไม่ว่าง')
     } else {
-      console.log('tea_status ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_status: true }))
     }
     if (dataTeacher.tea_tel !== '') {
-      console.log('tea_tel ไม่ว่าง')
     } else {
-      console.log('tea_tel ว่าง')
       setColorChangeTc(pre => ({ ...pre, tea_tel: true }))
     }
   }
 
   const HandleDelTc = id => {
     const onDelTc = { tea_id: id }
-    console.log('sss', onDelTc)
     axios
       .delete('http://localhost:3200/api/v1/teacherdelete', { data: onDelTc })
       .then(res => {
-        console.log(res)
         window.location.reload()
         handleCloseDel()
       })
       .catch(err => {
-        console.log(err)
       })
   }
 
@@ -620,27 +596,13 @@ export default function bo_Teacher_manage() {
                   aria-labelledby='modal-modal-title'
                   aria-describedby='modal-modal-description'
                 >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      width: '30%',
-                      bgcolor: 'background.paper',
-                      border: '2px solid #000',
-                      boxShadow: 24,
-                      p: 4,
-                      borderRadius: 2
-                    }}
-                  >
+                  <Box sx={style}>
                     <Card>
                       <CardHeader title='Delete' titleTypographyProps={{ variant: 'h6' }} />
                       <CardContent>
                         <form onSubmit={e => e.preventDefault()}>
                           <Grid container spacing={4}>
                             <Grid item xs={12}>
-                              <Typography variant='h6'>Confirm Delete Data</Typography>
                               <Box
                                 sx={{
                                   gap: 5,
