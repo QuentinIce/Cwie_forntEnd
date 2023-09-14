@@ -38,8 +38,6 @@ const Navigation = () => {
       })
   }, [])
 
-  console.log('ss', status)
-
   let menuItems = [
     {
       title: 'Home Page',
@@ -145,16 +143,7 @@ const Navigation = () => {
         path: '/registry-office/registry-documents',
         openInNewTab: false
       },
-      {
-        title: 'Supervision List',
-        icon: ChevronDoubleRight,
-        path: '/supervisionStudent_list'
-      },
-      {
-        title: 'Supervision Establishment',
-        icon: ChevronDoubleRight,
-        path: '/supervisionEstablishment'
-      },
+
       {
         sectionTitle: 'Back Office'
       },

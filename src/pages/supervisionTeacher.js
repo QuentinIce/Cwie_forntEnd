@@ -127,70 +127,46 @@ export default function SupervisionTeacher() {
         })
     }
     if (dataSupervisionTc.su_day !== '') {
-      console.log('su_day ไม่ว่าง')
     } else {
-      console.log('su_day ว่าง')
       setColorSupervision(pre => ({ ...pre, su_day: true }))
     }
     if (dataSupervisionTc.su_mon !== '') {
-      console.log('su_mon ไม่ว่าง')
     } else {
-      console.log('su_mon ว่าง')
       setColorSupervision(pre => ({ ...pre, su_mon: true }))
     }
     if (dataSupervisionTc.su_year !== '') {
-      console.log('su_year ไม่ว่าง')
     } else {
-      console.log('su_year ว่าง')
       setColorSupervision(pre => ({ ...pre, su_year: true }))
     }
     if (dataSupervisionTc.su_time !== '') {
-      console.log('su_time ไม่ว่าง')
     } else {
-      console.log('su_time ว่าง')
       setColorSupervision(pre => ({ ...pre, su_time: true }))
     }
     if (dataSupervisionTc.su_daparment !== '') {
-      console.log('su_daparment ไม่ว่าง')
     } else {
-      console.log('su_daparment ว่าง')
       setColorSupervision(pre => ({ ...pre, su_daparment: true }))
     }
     if (dataSupervisionTc.su_time !== '') {
-      console.log('su_time ไม่ว่าง')
     } else {
-      console.log('su_time ว่าง')
       setColorSupervision(pre => ({ ...pre, su_time: true }))
     }
     if (dataSupervisionTc.su_mname !== '') {
-      console.log('su_mname ไม่ว่าง')
     } else {
-      console.log('su_mname ว่าง')
       setColorSupervision(pre => ({ ...pre, su_mname: true }))
     }
     if (dataSupervisionTc.su_job !== '') {
-      console.log('su_job ไม่ว่าง')
     } else {
-      console.log('su_job ว่าง')
       setColorSupervision(pre => ({ ...pre, su_job: true }))
     }
     if (dataSupervisionTc.su_numstu !== '') {
-      console.log('su_numstu ไม่ว่าง')
     } else {
-      console.log('su_numstu ว่าง')
       setColorSupervision(pre => ({ ...pre, su_numstu: true }))
     }
     if (dataSupervisionTc.su_sugges !== '') {
-      console.log('su_sugges ไม่ว่าง')
     } else {
-      console.log('su_sugges ว่าง')
       setColorSupervision(pre => ({ ...pre, su_sugges: true }))
     }
   }
-
-  useEffect(() => {
-    console.log(dataSupervisionTc)
-  }, [dataSupervisionTc])
 
   return (
     <Box>

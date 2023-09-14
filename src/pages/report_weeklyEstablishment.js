@@ -47,7 +47,6 @@ export default function report_weeklyEstablishment() {
           variant='text'
           onClick={() => {
             handleOpen()
-            console.log(params.row)
             setGetRow(params.row)
           }}
         >

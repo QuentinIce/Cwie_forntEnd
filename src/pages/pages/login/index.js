@@ -228,13 +228,6 @@ const LoginPage = () => {
               </Link>
               <Link href='/' passHref>
                 <IconButton component='a' onClick={e => e.preventDefault()}>
-                  <Github
-                    sx={{ color: theme => (theme.palette.mode === 'light' ? '#272727' : theme.palette.grey[300]) }}
-                  />
-                </IconButton>
-              </Link>
-              <Link href='/' passHref>
-                <IconButton component='a' onClick={e => e.preventDefault()}>
                   <Google sx={{ color: '#db4437' }} />
                 </IconButton>
               </Link>

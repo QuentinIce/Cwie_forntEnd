@@ -6,7 +6,7 @@ import { mdiAccountMultiple } from '@mdi/js'
 import axios from 'axios'
 import { DataGrid } from '@mui/x-data-grid'
 
-export default function bo_Establishment_manage() {
+export default function Bo_Establishment_manage() {
   const intialComp = {
     com_name: '',
     com_type: '',
@@ -27,6 +27,7 @@ export default function bo_Establishment_manage() {
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
+
   const handleClose = () => {
     setOpen(false)
     setDataCompany(intialComp)
@@ -35,6 +36,7 @@ export default function bo_Establishment_manage() {
 
   const [openEdit, setOpenEdit] = useState(false)
   const handleOpenEdit = () => setOpenEdit(true)
+
   const handleCloseEdit = () => {
     setOpenEdit(false)
     setDataCompany(intialComp)
@@ -77,7 +79,6 @@ export default function bo_Establishment_manage() {
           onClick={() => {
             setDataCompany(params.row)
             handleOpenEdit()
-            console.log(params.row)
           }}
         >
           Edit
@@ -106,16 +107,13 @@ export default function bo_Establishment_manage() {
 
   const HandleDelComp = id => {
     const onDel = { com_id: id }
-    console.log('id', onDel)
     axios
       .delete('http://localhost:3200/api/v1/companydelete', { data: onDel })
       .then(res => {
-        console.log(res)
         window.location.reload()
         handleCloseDel()
       })
       .catch(err => {
-        console.log(err)
       })
   }
 
@@ -178,42 +176,30 @@ export default function bo_Establishment_manage() {
       axios
         .post('http://localhost:3200/api/v1/companyinsert', dataCompany)
         .then(res => {
-          console.log(res)
           window.location.reload()
           handleClose()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataCompany.com_name !== '') {
-      console.log('com_name ไม่ว่าง')
     } else {
-      console.log('com_name ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_name: true }))
     }
     if (dataCompany.com_type !== '') {
-      console.log('com_type ไม่ว่าง')
     } else {
-      console.log('com_type ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_type: true }))
     }
     if (dataCompany.com_add !== '') {
-      console.log('com_add ไม่ว่าง')
     } else {
-      console.log('com_add ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_add: true }))
     }
     if (dataCompany.com_province !== '') {
-      console.log('com_province ไม่ว่าง')
     } else {
-      console.log('com_province ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_province: true }))
     }
     if (dataCompany.com_contact !== '') {
-      console.log('com_contact ไม่ว่าง')
     } else {
-      console.log('com_contact ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_contact: true }))
     }
   }
@@ -225,7 +211,6 @@ export default function bo_Establishment_manage() {
   }, [])
 
   useEffect(() => {
-    console.log(dataCompany)
   }, [dataCompany])
 
   const HandleEditComp = () => {
@@ -243,42 +228,30 @@ export default function bo_Establishment_manage() {
       axios
         .post('http://localhost:3200/api/v1/companyupdate', dataCompany)
         .then(res => {
-          console.log(res)
           window.location.reload()
           handleClose()
         })
         .catch(err => {
-          console.log(err)
         })
     }
     if (dataCompany.com_name !== '') {
-      console.log('com_name ไม่ว่าง')
     } else {
-      console.log('com_name ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_name: true }))
     }
     if (dataCompany.com_type !== '') {
-      console.log('com_type ไม่ว่าง')
     } else {
-      console.log('com_type ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_type: true }))
     }
     if (dataCompany.com_add !== '') {
-      console.log('com_add ไม่ว่าง')
     } else {
-      console.log('com_add ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_add: true }))
     }
     if (dataCompany.com_province !== '') {
-      console.log('com_province ไม่ว่าง')
     } else {
-      console.log('com_province ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_province: true }))
     }
     if (dataCompany.com_contact !== '') {
-      console.log('com_contact ไม่ว่าง')
     } else {
-      console.log('com_contact ว่าง')
       setColoChangeComp(pre => ({ ...pre, com_contact: true }))
     }
   }

@@ -44,7 +44,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
         com_id: com_id
       })
       .then(res => {
-        console.log('res: ', res.data.data[0])
         setDataCompany(res.data.data[0])
       })
       .catch(err => {
@@ -59,8 +58,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
       })
 
       const data = response.data.data
-
-      console.log('data: ', data)
 
       setDocumentsData(data)
     } catch (error) {
@@ -82,8 +79,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
       const currentDate = `${now.toISOString().split('T')[0]} ${now.toTimeString().split(' ')[0]}`
       const formattedDate = currentDate.replace(/:/g, '-').replace(/ /g, '_')
 
-      console.log('file: ', file)
-
       const displayError = message => {
         Swal.fire({
           position: 'center',
@@ -101,8 +96,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
         return // Stop execution if it's not a PDF
       }
 
-      console.log('file: ', file)
-
       // ? รอดึงข้อมูลสถานประกอบการ
       const uploadFile = {
         company_id: dataCompany.com_id,
@@ -113,8 +106,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
       const formData = new FormData()
       formData.append('pdf', file)
       formData.append('newName', uploadFile.ad_filename)
-
-      console.log('uploadFile: ', uploadFile)
 
       // ** API Backend
       const resApiBackend = await axios.post(
@@ -127,15 +118,11 @@ const TeacherDocumentPage = ({ semesterYear }) => {
         }
       )
 
-      console.log('resApiBackend: ', resApiBackend)
-
       const resApiFrontend = await axios.post('/api/upload-com', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
-
-      console.log('resApiFrontend: ', resApiFrontend)
 
       if (resApiFrontend.status === 200 && resApiBackend.status === 200) {
         Swal.fire({
@@ -256,8 +243,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
         })
 
         const data = response.data.data
-
-        console.log('data: ', data)
 
         setDocumentsData(data)
       } catch (error) {

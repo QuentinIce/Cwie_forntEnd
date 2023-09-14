@@ -47,7 +47,7 @@ const UserDropdown = () => {
   const [showstatus, setShowstate] = useState('')
 
   // console.log(Cookies.get('._jwtUsername'))
-  console.log(role)
+  // console.log(role)
 
   useEffect(() => {
     axios
@@ -61,7 +61,7 @@ const UserDropdown = () => {
       })
   }, [])
 
-  console.log('xx', user)
+  // console.log('xx', user)
 
   useEffect(() => {
     if (user !== undefined && status !== undefined) {

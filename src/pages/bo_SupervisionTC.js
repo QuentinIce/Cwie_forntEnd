@@ -10,6 +10,9 @@ export default function bo_SupervisionTC() {
   const [dataRowSuperES, setDataRowSuperES] = useState('')
 
   const column = [
+    { field: 'tea_name', headerName: 'Teacher Name', width: 150 },
+    { field: 'tea_lname', headerName: 'Teacher Last Name', width: 150 },
+    { field: 'com_name', headerName: 'Company', width: 150 },
     { field: 'su_day', headerName: 'Day', width: 150 },
     { field: 'su_mon', headerName: 'Month ', width: 150 },
     { field: 'su_year', headerName: 'Year', width: 150 },

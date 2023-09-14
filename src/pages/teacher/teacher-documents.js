@@ -81,8 +81,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
         return // Stop execution if it's not a PDF
       }
 
-      console.log('file: ', file)
-
       // ? รอดึงข้อมูลนักศึกษา
       const uploadFile = {
         student_id: id,
@@ -91,8 +89,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
         doc_type: doc_type,
         doc_version: 3
       }
-
-      console.log('uploadFile: ', uploadFile)
 
       // ** API Backend
       const resApiBackend = await axios.post(
@@ -104,7 +100,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
           }
         }
       )
-      console.log('resApiBackend: ', resApiBackend)
 
       // ? ต้องรัน server.js ก่อน
       const formData = new FormData()
@@ -116,7 +111,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
         method: 'PUT',
         body: formData
       })
-      console.log('resApiFrontend: ', resApiFrontend)
 
       if (resApiFrontend.status === 200 && resApiBackend.status === 200) {
         Swal.fire({
@@ -147,8 +141,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
   const handleDownloadFile = async (stu_code, doc_type) => {
     try {
       const fileName = `${stu_code}_Document_${doc_type}`
-
-      console.log('fileName: ', fileName)
 
       // ** API Frontend
       // Send a GET request to the download URL
@@ -191,7 +183,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
   const handleDisapproveFile = async doc_id => {
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BACKEND}/api/getDocumentsNotPass`, { doc_id: doc_id })
-      console.log(res)
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -311,7 +302,6 @@ const TeacherDocumentPage = ({ semesterYear }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(semesterYearData.lsy_semester, '/', semesterYearData.lsy_year)
       try {
         const response = await axios.post('http://localhost:3200/api/getDocumentsForTeacher', {
           semester: semesterYearData.lsy_semester,

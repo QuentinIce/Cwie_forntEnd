@@ -59,9 +59,46 @@ const Report_weeklyStudent = () => {
     }
   }, [username, status])
 
-  useEffect(() => {
-    console.log('showname', studentData)
-  }, [studentData])
+  const [getRow, setGetRow] = useState('')
+  const [openRow, setOpenRow] = useState(false)
+  const handleOpenRow = () => setOpenRow(true)
+
+  const handleCloseRow = () => {
+    setOpenRow(false)
+  }
+
+  const columns = [
+    { field: 'stu_id', headerName: 'Student ID', width: 200 },
+    { field: 'stu_name', headerName: 'Student Name', width: 150 },
+    { field: 'stu_lname', headerName: 'Student Last Name', width: 200 },
+    { field: 're_hname', headerName: 'Topic', width: 200 },
+    { field: 're_details', headerName: 'Detail', width: 200 },
+    { field: 're_week', headerName: 'Week', width: 150 },
+    { field: 'com_name', headerName: 'Company', width: 150 },
+    {
+      field: 'SHOW',
+      headerName: 'SHOW',
+      width: 150,
+      renderCell: (
+        params //ทั้งหมดมี button edit
+      ) => (
+        <Button
+          variant='text'
+          onClick={() => {
+            handleOpenRow()
+            console.log(params.row)
+            setGetRow(params.row)
+          }}
+        >
+          Show
+        </Button>
+      )
+    }
+  ]
+
+  // useEffect(() => {
+  //   console.log('showname', studentData)
+  // }, [studentData])
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -144,7 +181,6 @@ const Report_weeklyStudent = () => {
       }))
     }
     axios.post('http://localhost:3200/api/v1/insertreport', reportData).then(res => {
-      console.log(res)
       window.location.reload()
       handleClose()
       setReportData(resetData)
@@ -161,10 +197,6 @@ const Report_weeklyStudent = () => {
     p: 4,
     borderRadius: 1
   }
-
-  useEffect(() => {
-    console.log(reportData)
-  }, [reportData])
 
   return (
     <Box>

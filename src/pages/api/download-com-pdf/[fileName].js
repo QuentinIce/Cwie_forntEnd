@@ -7,9 +7,6 @@ export default (req, res) => {
     const fileName = req.query.fileName
     const filePath = `public/documents-company/${fileName}.pdf`
 
-    console.log('fileName: ', fileName)
-    console.log('filePath: ', filePath)
-
     if (fs.existsSync(filePath)) {
       // Set appropriate headers
       res.setHeader('Content-Disposition', `attachment; filename=${fileName}.pdf`)

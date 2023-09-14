@@ -44,7 +44,6 @@ export default function cooperative() {
   const handleClose = () => setOpen(false)
 
   const HandleRowAndOpen = data => {
-    console.log(data)
     setDataRow(data)
     setOpen(true)
   }
