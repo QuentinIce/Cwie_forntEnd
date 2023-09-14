@@ -6,7 +6,7 @@ import { mdiAccountMultiple } from '@mdi/js'
 import axios from 'axios'
 import { DataGrid } from '@mui/x-data-grid'
 
-export default function bo_Establishment_manage() {
+export default function Bo_Establishment_manage() {
   const intialComp = {
     com_name: '',
     com_type: '',
@@ -27,6 +27,7 @@ export default function bo_Establishment_manage() {
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
+
   const handleClose = () => {
     setOpen(false)
     setDataCompany(intialComp)
@@ -35,6 +36,7 @@ export default function bo_Establishment_manage() {
 
   const [openEdit, setOpenEdit] = useState(false)
   const handleOpenEdit = () => setOpenEdit(true)
+
   const handleCloseEdit = () => {
     setOpenEdit(false)
     setDataCompany(intialComp)
