@@ -10,6 +10,7 @@ export default function bo_SupervisionES() {
   const [dataRowSuperES, setDataRowSuperES] = useState('')
 
   const column = [
+    { field: 'com_name', headerName: 'Company', width: 150 },
     { field: 'su_need', headerName: 'Need more interns', width: 150 },
     { field: 'su_time', headerName: 'Time supervision ', width: 150 },
     { field: 'su_detail', headerName: 'interview interns', width: 150 },
