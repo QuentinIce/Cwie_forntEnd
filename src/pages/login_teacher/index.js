@@ -39,6 +39,7 @@ import 'toastify-js/src/toastify.css'
 import Swal from 'sweetalert2'
 
 import Cookies from 'js-cookie'
+
 // import cookieCutter from 'cookie-cutter'
 const now = new Date()
 
@@ -90,6 +91,7 @@ const LoginPage = () => {
         password: values.password
       })
       .then(teaData => {
+        console.log('tea', teaData)
         if (teaData.data.statusCode !== 404) {
           // ถ้าไอดีตรงใน authenticationtea
           Cookies.set('jwtUsername', teaData.data.jwt, { expires: 1 })
