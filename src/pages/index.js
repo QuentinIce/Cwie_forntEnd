@@ -134,6 +134,29 @@ const LoginPage = () => {
               >
                 <Button
                   sx={{ py: 5, textTransform: 'none' }}
+                  onClick={() => handleDropdownCloselogout('/login_admin')}
+                >
+                  Login (Admin) 👋🏻
+                </Button>
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+      </div>
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+        <Card sx={{ zIndex: 1, width: '80%', maxWidth: 400 }}>
+          <CardContent sx={{ padding: `${theme.spacing(5)} !important` }}>
+            <Box sx={{ mb: 3, textAlign: 'center' }}>
+              <Typography
+                variant='h6'
+                sx={{
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  fontSize: '1.5rem !important'
+                }}
+              >
+                <Button
+                  sx={{ py: 5, textTransform: 'none' }}
                   onClick={() => handleDropdownCloselogout('/login_company')}
                 >
                   Login (Company) 👋🏻
