@@ -38,7 +38,7 @@ const Navigation = () => {
       })
   }, [])
 
-  console.log('ss', status)
+  // console.log('ss', status)
 
   let menuItems = [
     {
