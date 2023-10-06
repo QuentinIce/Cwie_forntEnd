@@ -113,7 +113,7 @@ const LoginPage = () => {
                 // ถ้าไอดีไม่ตรงใน authenticationofficer
                 // ลองเรียก API authenticationscom
                 axios
-                  .post('http://10.21.45.100:3000/api/authenticationcom', {
+                  .post('http://10.21.45.100:3000/api/authenticationTEA-CHER', {
                     username: values.email,
                     password: values.password
                   })

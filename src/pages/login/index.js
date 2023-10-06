@@ -90,13 +90,31 @@ const LoginPage = () => {
         password: values.password
       })
       .then(data => {
-        console.log('jwt', data)
+        // console.log('jwt', data)
         if (data.data.statusCode === 404) {
-          setSuccess(false)
-        } else {
-          Cookies.set('jwtUsername', data.data.jwt)
-          Cookies.set('jwtRole', data.data.jwtRole)
+          Cookies.set('jwtUsername', data.data.jwt, { expires: 1 })
+          Cookies.set('jwtRole', data.data.jwtRole, { expires: 1 })
           setSuccess(true)
+        } else {
+          axios
+            .post('http://10.21.45.100:3000/api/authentication', {
+              username: values.email,
+              password: values.password
+            })
+            .then(datastu => {
+              if (scomData.data.statusCode !== 404) {
+                // ถ้าไอดีตรงใน authenticationscom
+                Cookies.set('jwtUsername', datastu.data.jwt, { expires: 1 })
+                Cookies.set('jwtRole', datastu.data.jwtRole, { expires: 1 })
+                setSuccess(true)
+              } else {
+                // ถ้าไอดีไม่ตรงในทั้งสาม API
+                setSuccess(false)
+              }
+            })
+            .catch(error => {
+              console.error('Error calling authentication API:', error)
+            })
         }
       })
       .catch(err => {
