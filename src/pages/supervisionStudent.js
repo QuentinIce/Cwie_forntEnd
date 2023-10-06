@@ -28,7 +28,7 @@ export default function SupervisionStudent() {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -41,7 +41,7 @@ export default function SupervisionStudent() {
   const [dataCompany, setDataCompany] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3200/api/v1/companys').then(res => {
+    axios.get('http://localhost:3000/api/v1/companys').then(res => {
       setDataCompany(res.data.data)
     })
   }, [])
@@ -49,7 +49,7 @@ export default function SupervisionStudent() {
   useEffect(() => {
     if (username !== undefined && status !== undefined) {
       if (status === 'นักศึกษา') {
-        axios.post('http://localhost:3200/api/ReadStudent', { username: username }).then(data => {
+        axios.post('http://localhost:3000/api/ReadStudent', { username: username }).then(data => {
           if (data.data.length > 0) {
             setStudentData(data.data[0])
           }
@@ -166,7 +166,7 @@ export default function SupervisionStudent() {
         ...dataSt // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3200/api/v1/supervisionstuinsert', dataSt)
+        .post('http://localhost:3000/api/v1/supervisionstuinsert', dataSt)
         .then(res => {
           window.location.reload()
           setDataSt(intialSt)

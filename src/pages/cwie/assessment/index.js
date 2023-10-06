@@ -56,7 +56,7 @@ const Assessment = () => {
     const jwtRole = Cookies.get('jwtRole')
 
     axios
-      .get('http://localhost:3200/api/v1/getquestion_student')
+      .get('http://localhost:3000/api/v1/getquestion_student')
       .then(res => {
         setQuestions(res.data.data)
       })
@@ -65,7 +65,7 @@ const Assessment = () => {
       })
 
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -78,7 +78,7 @@ const Assessment = () => {
       })
 
     axios
-      .get('http://localhost:3200/api/v1/students')
+      .get('http://localhost:3000/api/v1/students')
       .then(res => {
         setStudentData(res.data.data)
       })
@@ -89,7 +89,7 @@ const Assessment = () => {
 
   useEffect(() => {
     if (status === 'อาจารย์') {
-      axios.post('http://localhost:3200/api/ReadTeacher', { username: username }).then(data => {
+      axios.post('http://localhost:3000/api/ReadTeacher', { username: username }).then(data => {
         if (data.data.length > 0) {
           setTeacherData(data.data[0])
         }
@@ -137,7 +137,7 @@ const Assessment = () => {
 
   const handleSubmitClick = () => {
     axios
-      .post('http://localhost:3200/api/v1/sendquestion_student', { answerData: answerData })
+      .post('http://localhost:3000/api/v1/sendquestion_student', { answerData: answerData })
       .then(res => {
         console.log('res: ', res)
         console.log('answerData: ', answerData)

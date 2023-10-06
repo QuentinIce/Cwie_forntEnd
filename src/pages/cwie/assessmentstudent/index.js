@@ -104,7 +104,7 @@ const SurveyForm = () => {
 
     axios
       .post(
-        'http://localhost:3200/api/v2/answer_company_student',
+        'http://localhost:3000/api/v2/answer_company_student',
         { answerData: answerData },
         {
           headers: {
@@ -132,7 +132,7 @@ const SurveyForm = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -142,7 +142,7 @@ const SurveyForm = () => {
       })
 
     axios
-      .get('http://localhost:3200/api/v1/students')
+      .get('http://localhost:3000/api/v1/students')
       .then(res => {
         setStudentData(res.data.data)
       })
@@ -153,7 +153,7 @@ const SurveyForm = () => {
 
   useEffect(() => {
     if (status === 'สถานประกอบการ') {
-      axios.post('http://localhost:3200/api/Read_Company', { username: username }).then(data => {
+      axios.post('http://localhost:3000/api/Read_Company', { username: username }).then(data => {
         if (data.data.length > 0) {
           setCompanyData(data.data[0])
         }

@@ -43,7 +43,7 @@ export default function Cooperative() {
   const [dataRow, setDataRow] = useState('')
 
   useEffect(() => {
-    axios.get('http://localhost:3200/api/v1/companys').then(res => {
+    axios.get('http://localhost:3000/api/v1/companys').then(res => {
       setDataComp(res.data.data)
     })
   }, [])

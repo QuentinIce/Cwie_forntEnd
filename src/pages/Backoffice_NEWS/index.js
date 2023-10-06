@@ -63,7 +63,7 @@ const BackOfficeNEWS = () => {
         ...dataNews // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3200/api/v1/insertnew', dataNews)
+        .post('http://localhost:3000/api/v1/insertnew', dataNews)
         .then(res => {
           window.location.reload()
           handleClose()
@@ -85,7 +85,7 @@ const BackOfficeNEWS = () => {
 
   const handleDelNEWS = id => {
     axios
-      .post('http://localhost:3200/api/v1/deletenew', { new_id: id })
+      .post('http://localhost:3000/api/v1/deletenew', { new_id: id })
       .then(res => {
         window.location.reload()
         handleCloseDel()
@@ -138,7 +138,7 @@ const BackOfficeNEWS = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/v1/getnews')
+      .post('http://localhost:3000/api/v1/getnews')
       .then(res => {
         setRowDataNEWS(res.data.data)
       })

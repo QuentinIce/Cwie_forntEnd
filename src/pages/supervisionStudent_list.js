@@ -22,7 +22,7 @@ export default function SupervisionStudent_list() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3200/api/v1/supervisionstu')
+      .get('http://localhost:3000/api/v1/supervisionstu')
       .then(res => {
         setDataRowSuperSt(res.data.data)
       })

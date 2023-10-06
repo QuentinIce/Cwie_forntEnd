@@ -69,7 +69,7 @@ export default function Report_weeklyEstablishment() {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -77,14 +77,14 @@ export default function Report_weeklyEstablishment() {
         setUsername(data.data.User)
         setStatus(data.data.stateRole)
       })
-    axios.get('http://localhost:3200/api/v1/getreport').then(res => {
+    axios.get('http://localhost:3000/api/v1/getreport').then(res => {
       setRowReportStd(res.data.data)
     })
   }, [jwtUsername, jwtRole])
 
   useEffect(() => {
     if (status === 'สถานประกอบการ') {
-      axios.post('http://localhost:3200/api/Read_Company', { username: username }).then(data => {
+      axios.post('http://localhost:3000/api/Read_Company', { username: username }).then(data => {
         if (data.data.length > 0) {
           setCompanyData(data.data[0])
           const id = data.data[0].com_id

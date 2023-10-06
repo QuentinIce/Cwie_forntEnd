@@ -40,7 +40,7 @@ const SurveyForm = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -52,7 +52,7 @@ const SurveyForm = () => {
 
   useEffect(() => {
     if (status === 'อาจารย์') {
-      axios.post('http://localhost:3200/api/ReadTeacher', { username: username }).then(data => {
+      axios.post('http://localhost:3000/api/ReadTeacher', { username: username }).then(data => {
         if (data.data.length > 0) {
           setTeacherData(data.data[0])
         }
@@ -63,7 +63,7 @@ const SurveyForm = () => {
   const [dataCompany, setDataCompany] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3200/api/v1/companys').then(res => {
+    axios.get('http://localhost:3000/api/v1/companys').then(res => {
       setDataCompany(res.data.data)
     })
   }, [])
@@ -122,7 +122,7 @@ const SurveyForm = () => {
 
       // ส่งข้อมูลแต่ละ object ไปยัง API
       axios
-        .post('http://localhost:3200/api/v1/answer_teacher', dataToSend)
+        .post('http://localhost:3000/api/v1/answer_teacher', dataToSend)
         .then(res => {
           console.log(res)
         })

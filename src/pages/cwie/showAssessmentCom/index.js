@@ -30,7 +30,7 @@ const ShowAssessmentCom = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3200/api/v1/companys')
+      .get('http://localhost:3000/api/v1/companys')
       .then(res => {
         setDataCompany(res.data.data)
       })
@@ -41,7 +41,7 @@ const ShowAssessmentCom = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3200/api/v1/getevaluate')
+      .get('http://localhost:3000/api/v1/getevaluate')
       .then(res => {
         setGetAssesmentCom(res.data.data)
       })

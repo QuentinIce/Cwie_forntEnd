@@ -40,7 +40,7 @@ const Report_weeklyStudent = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -48,7 +48,7 @@ const Report_weeklyStudent = () => {
         setUsername(data.data.User)
         setStatus(data.data.stateRole)
       })
-    axios.get('http://localhost:3200/api/v1/getreport').then(res => {
+    axios.get('http://localhost:3000/api/v1/getreport').then(res => {
       setGetStudentRow(res.data.data)
     })
   }, [jwtUsername, jwtRole])
@@ -56,7 +56,7 @@ const Report_weeklyStudent = () => {
   useEffect(() => {
     if (username !== undefined && status !== undefined) {
       if (status === 'นักศึกษา') {
-        axios.post('http://localhost:3200/api/ReadStudent', { username: username }).then(data => {
+        axios.post('http://localhost:3000/api/ReadStudent', { username: username }).then(data => {
           if (data.data.length > 0) {
             setStudentData(data.data[0])
             const id = data.data[0].Id
@@ -168,7 +168,7 @@ const Report_weeklyStudent = () => {
   const [dataCompany, setDataCompany] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3200/api/v1/companys').then(res => {
+    axios.get('http://localhost:3000/api/v1/companys').then(res => {
       setDataCompany(res.data.data)
     })
   }, [])
@@ -185,7 +185,7 @@ const Report_weeklyStudent = () => {
         ...reportData
       }))
     }
-    axios.post('http://localhost:3200/api/v1/insertreport', reportData).then(res => {
+    axios.post('http://localhost:3000/api/v1/insertreport', reportData).then(res => {
       window.location.reload()
       handleClose()
       setReportData(resetData)

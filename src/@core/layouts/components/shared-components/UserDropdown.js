@@ -48,7 +48,7 @@ const UserDropdown = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', { //เอาของอั๋นมาแปะ
+      .post('http://localhost:3000/api/verify_authen', { //เอาของอั๋นมาแปะ
         token: username,
         tokenRole: role
       })
@@ -61,7 +61,7 @@ const UserDropdown = () => {
   useEffect(() => {
     if (user !== undefined && status !== undefined) {
       if (status === 'นักศึกษา') {
-        axios.post('http://localhost:3200/api/ReadStudent', { username: user }).then(data => {
+        axios.post('http://localhost:3000/api/ReadStudent', { username: user }).then(data => {
           if (data.data.length > 0) {
             const setFristName = data.data[0].stu_name
             setShowname(setFristName)
@@ -70,7 +70,7 @@ const UserDropdown = () => {
         })
       }
       if (status === 'อาจารย์') {
-        axios.post('http://localhost:3200/api/ReadTeacher', { username: user }).then(data => {
+        axios.post('http://localhost:3000/api/ReadTeacher', { username: user }).then(data => {
           if (data.data.length > 0) {
             const setFristName = data.data[0].tea_name
             setShowname(setFristName)
@@ -79,7 +79,7 @@ const UserDropdown = () => {
         })
       }
       if (status === 'เจ้าหน้าที่') {
-        axios.post('http://localhost:3200/api/Readofficer', { username: user }).then(data => {
+        axios.post('http://localhost:3000/api/Readofficer', { username: user }).then(data => {
           if (data.data.length > 0) {
             const setFristName = data.data[0].off_name
             setShowname(setFristName)
@@ -88,7 +88,7 @@ const UserDropdown = () => {
         })
       }
       if (status === 'สถานประกอบการ') {
-        axios.post('http://localhost:3200/api/Read_Company', { username: user }).then(data => {
+        axios.post('http://localhost:3000/api/Read_Company', { username: user }).then(data => {
           if (data.data.length > 0) {
             const setFristName = data.data[0].com_name
             setShowname(setFristName)

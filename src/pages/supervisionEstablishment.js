@@ -46,7 +46,7 @@ export default function SupervisionEstabishment() {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -58,7 +58,7 @@ export default function SupervisionEstabishment() {
 
   useEffect(() => {
     if (status === 'สถานประกอบการ') {
-      axios.post('http://localhost:3200/api/Read_Company', { username: username }).then(data => {
+      axios.post('http://localhost:3000/api/Read_Company', { username: username }).then(data => {
         if (data.data.length > 0) {
           setCompanyData(data.data[0])
         }
@@ -124,7 +124,7 @@ export default function SupervisionEstabishment() {
         ...dataSupervisionEs // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3200/api/v1/supervisioncominsert', dataSupervisionEs)
+        .post('http://localhost:3000/api/v1/supervisioncominsert', dataSupervisionEs)
         .then(res => {
           console.log(res)
           window.location.reload()

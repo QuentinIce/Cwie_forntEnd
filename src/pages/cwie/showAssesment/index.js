@@ -32,7 +32,7 @@ const ShowAssessment = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/verify_authen', {
+      .post('http://localhost:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -40,7 +40,7 @@ const ShowAssessment = () => {
         setUsername(data.data.User)
         setStatus(data.data.stateRole)
       })
-    axios.get('http://localhost:3200/api/v1/getevaluatestudent').then(res => {
+    axios.get('http://localhost:3000/api/v1/getevaluatestudent').then(res => {
       console.log('go')
       setGetRowAssessments(res.data.data)
     })
@@ -49,7 +49,7 @@ const ShowAssessment = () => {
   useEffect(() => {
     if (username !== undefined && status !== undefined) {
       if (status === 'นักศึกษา') {
-        axios.post('http://localhost:3200/api/ReadStudent', { username: username }).then(data => {
+        axios.post('http://localhost:3000/api/ReadStudent', { username: username }).then(data => {
           if (data.data.length > 0) {
             setStudentData(data.data[0])
             const id = data.data[0].Id

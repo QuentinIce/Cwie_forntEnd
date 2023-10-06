@@ -48,7 +48,7 @@ export default function News() {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3200/api/v1/getnews')
+      .post('http://localhost:3000/api/v1/getnews')
       .then(res => {
         setDataNews(res.data.data)
       })
