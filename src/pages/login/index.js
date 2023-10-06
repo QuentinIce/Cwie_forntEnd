@@ -84,42 +84,43 @@ const LoginPage = () => {
   const [success, setSuccess] = useState(null)
 
   const submitForm = () => {
+    // ตรวจสอบ API authenticationstu
     axios
       .post('http://10.21.45.100:3000/api/authenticationstu', {
         username: values.email,
         password: values.password
       })
-      .then(data => {
-        // console.log('jwt', data)
-        if (data.data.statusCode === 404) {
-          Cookies.set('jwtUsername', data.data.jwt, { expires: 1 })
-          Cookies.set('jwtRole', data.data.jwtRole, { expires: 1 })
-          setSuccess(true)
-        } else {
+      .then(stuData => {
+        if (stuData.data.statusCode !== 404) {
+          // ถ้าไอดีตรงใน authenticationstu
+          // ลองเรียก API authentication
           axios
             .post('http://10.21.45.100:3000/api/authentication', {
               username: values.email,
               password: values.password
             })
-            .then(datastu => {
-              if (scomData.data.statusCode !== 404) {
-                // ถ้าไอดีตรงใน authenticationscom
-                Cookies.set('jwtUsername', datastu.data.jwt, { expires: 1 })
-                Cookies.set('jwtRole', datastu.data.jwtRole, { expires: 1 })
-                setSuccess(true)
+            .then(authData => {
+              if (authData.data.statusCode !== 404) {
+                // ถ้าไอดีตรงใน authentication
+                Cookies.set('jwtUsername', authData.data.jwt);
+                Cookies.set('jwtRole', authData.data.jwtRole);
+                setSuccess(true);
               } else {
-                // ถ้าไอดีไม่ตรงในทั้งสาม API
-                setSuccess(false)
+                // ถ้าไอดีไม่ตรงใน authentication
+                setSuccess(false);
               }
             })
             .catch(error => {
-              console.error('Error calling authentication API:', error)
-            })
+              console.error('Error calling authentication API:', error);
+            });
+        } else {
+          // ถ้าไอดีไม่ตรงใน authenticationstu
+          setSuccess(false);
         }
       })
-      .catch(err => {
-        console.log(err)
-      })
+      .catch(error => {
+        console.error('Error calling authenticationstu API:', error);
+      });
   }
 
   useEffect(() => {
