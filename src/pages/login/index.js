@@ -85,7 +85,7 @@ const LoginPage = () => {
 
   const submitForm = () => {
     axios
-      .post('http://localhost:3000/api/authenticationstu', {
+      .post('http://10.21.45.100:3000/api/authenticationstu', {
         username: values.email,
         password: values.password
       })

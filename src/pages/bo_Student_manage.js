@@ -61,7 +61,7 @@ const Bo_Student_manage = () => {
   })
 
   const GetStudentData = () => {
-    axios.get('http://localhost:3000/api/v1/students').then(res => {
+    axios.get('http://10.21.45.100:3000/api/v1/students').then(res => {
       setRowDataSt(res.data.data)
     })
   }
@@ -93,7 +93,7 @@ const Bo_Student_manage = () => {
 
           // ส่ง POST request ด้วย Axios
           axios
-            .post('http://localhost:3000/api/v1/uploadStudentCSV', formData)
+            .post('http://10.21.45.100:3000/api/v1/uploadStudentCSV', formData)
             .then(response => {
               const apiResponse = response.data
 
@@ -238,13 +238,13 @@ const Bo_Student_manage = () => {
   ]
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/students').then(res => {
+    axios.get('http://10.21.45.100:3000/api/v1/students').then(res => {
       setRowDataSt(res.data.data)
     })
-    axios.post('http://localhost:3000/api/v1/curriculum').then(res => {
+    axios.post('http://10.21.45.100:3000/api/v1/curriculum').then(res => {
       setCurriculumSt(res.data.results)
     })
-    axios.post('http://localhost:3000/api/v1/studygroup').then(res => {
+    axios.post('http://10.21.45.100:3000/api/v1/studygroup').then(res => {
       setStudyGroupSt(res.data.results)
     })
   }, [])
@@ -255,7 +255,7 @@ const Bo_Student_manage = () => {
 
   const fetchStudentData = () => {
     axios
-      .get('http://localhost:3000/api/v1/students')
+      .get('http://10.21.45.100:3000/api/v1/students')
       .then(response => {
         setRowDataSt(res.data.data)
       })
@@ -333,7 +333,7 @@ const Bo_Student_manage = () => {
       }))
 
       axios
-        .post('http://localhost:3000/api/v1/studentinsert', dataSt)
+        .post('http://10.21.45.100:3000/api/v1/studentinsert', dataSt)
         .then(res => {
           // console.log(res)
           window.location.reload()
@@ -387,7 +387,7 @@ const Bo_Student_manage = () => {
         ...dataSt
       }))
       axios
-        .post('http://localhost:3000/api/v1/studentupdate', dataSt)
+        .post('http://10.21.45.100:3000/api/v1/studentupdate', dataSt)
         .then(res => {
           window.location.reload()
           handleCloseEditSt()
@@ -427,7 +427,7 @@ const Bo_Student_manage = () => {
   const HandleDelSt = Id => {
     const onDelTc = { Id: Id }
     axios
-      .delete('http://localhost:3000/api/v1/Studentdelete', { data: onDelTc })
+      .delete('http://10.21.45.100:3000/api/v1/Studentdelete', { data: onDelTc })
       .then(res => {
         window.location.reload()
         fetchStudentData()

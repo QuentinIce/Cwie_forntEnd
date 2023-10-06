@@ -39,7 +39,7 @@ const TeacherDocumentPage = ({ semesterYear, documentsCompany }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/getDocumentsForTeacher', {
+      const response = await axios.post('http://10.21.45.100:3000/api/getDocumentsForTeacher', {
         semester: semesterYearData.lsy_semester,
         year: semesterYearData.lsy_year
       })
@@ -369,7 +369,7 @@ const TeacherDocumentPage = ({ semesterYear, documentsCompany }) => {
     const fetchData = async () => {
       console.log(semesterYearData.lsy_semester, '/', semesterYearData.lsy_year)
       try {
-        const response = await axios.post('http://localhost:3000/api/getDocumentsForTeacher', {
+        const response = await axios.post('http://10.21.45.100:3000/api/getDocumentsForTeacher', {
           semester: semesterYearData.lsy_semester,
           year: semesterYearData.lsy_year
         })

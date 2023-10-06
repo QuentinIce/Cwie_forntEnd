@@ -90,7 +90,7 @@ const LoginPage = () => {
     console.log('password', values.password)
 
     axios
-      .post('http://localhost:3000/api/authenticationcom', {
+      .post('http://10.21.45.100:3000/api/authenticationcom', {
         username: values.email,
         password: values.password
       })

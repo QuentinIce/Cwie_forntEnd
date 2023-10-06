@@ -85,7 +85,7 @@ const LoginPage = () => {
   const submitForm = () => {
     // ตรวจสอบ API authenticationtea
     axios
-      .post('http://localhost:3000/api/authenticationtea', { // เอาของอั๋นมาแปะ
+      .post('http://10.21.45.100:3000/api/authenticationtea', { // เอาของอั๋นมาแปะ
         username: values.email,
         password: values.password
       })
@@ -99,7 +99,7 @@ const LoginPage = () => {
           // ถ้าไอดีไม่ตรงใน authenticationtea
           // ลองเรียก API authenticationofficer
           axios
-            .post('http://localhost:3000/api/authenticationofficer', {
+            .post('http://10.21.45.100:3000/api/authenticationofficer', {
               username: values.email,
               password: values.password
             })
@@ -113,7 +113,7 @@ const LoginPage = () => {
                 // ถ้าไอดีไม่ตรงใน authenticationofficer
                 // ลองเรียก API authenticationscom
                 axios
-                  .post('http://localhost:3000/api/authenticationcom', {
+                  .post('http://10.21.45.100:3000/api/authenticationcom', {
                     username: values.email,
                     password: values.password
                   })

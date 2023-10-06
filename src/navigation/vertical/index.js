@@ -29,7 +29,7 @@ const Navigation = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3000/api/verify_authen', {
+      .post('http://10.21.45.100:3000/api/verify_authen', {
         token: username,
         tokenRole: role
       })

@@ -134,13 +134,13 @@ export default function Bo_Teacher_manage() {
   ]
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/teachers').then(res => {
+    axios.get('http://10.21.45.100:3000/api/v1/teachers').then(res => {
       setRowDataTeacher(res.data.data)
     })
-    axios.post('http://localhost:3000/api/v1/studygroup').then(res => {
+    axios.post('http://10.21.45.100:3000/api/v1/studygroup').then(res => {
       setStudyGroup(res.data.results)
     })
-    axios.post('http://localhost:3000/api/v1/curriculum').then(res => {
+    axios.post('http://10.21.45.100:3000/api/v1/curriculum').then(res => {
       setCurriculum(res.data.results)
     })
   }, [])
@@ -221,7 +221,7 @@ export default function Bo_Teacher_manage() {
         ...dataTeacher // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3000/api/v1/insertteacher', dataTeacher)
+        .post('http://10.21.45.100:3000/api/v1/insertteacher', dataTeacher)
         .then(res => {
           console.log(res)
           window.location.reload()
@@ -273,7 +273,7 @@ export default function Bo_Teacher_manage() {
         ...dataTeacher // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3000/api/v1/teacherupdate', dataTeacher)
+        .post('http://10.21.45.100:3000/api/v1/teacherupdate', dataTeacher)
         .then(res => {
           setDataTeacher(intialTea)
           window.location.reload()
@@ -313,7 +313,7 @@ export default function Bo_Teacher_manage() {
     const onDelTc = { tea_id: id }
 
     axios
-      .delete('http://localhost:3000/api/v1/teacherdelete', { data: onDelTc })
+      .delete('http://10.21.45.100:3000/api/v1/teacherdelete', { data: onDelTc })
       .then(res => {
         console.log(res)
         window.location.reload()

@@ -71,7 +71,7 @@ export default function SupervisionTeacher() {
 
   useEffect(() => {
     axios
-      .post('http://localhost:3000/api/verify_authen', {
+      .post('http://10.21.45.100:3000/api/verify_authen', {
         token: jwtUsername,
         tokenRole: jwtRole
       })
@@ -84,14 +84,14 @@ export default function SupervisionTeacher() {
   const [dataCompany, setDataCompany] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/companys').then(res => {
+    axios.get('http://10.21.45.100:3000/api/v1/companys').then(res => {
       setDataCompany(res.data.data)
     })
   }, [])
 
   useEffect(() => {
     if (status === 'อาจารย์') {
-      axios.post('http://localhost:3000/api/ReadTeacher', { username: username }).then(data => {
+      axios.post('http://10.21.45.100:3000/api/ReadTeacher', { username: username }).then(data => {
         if (data.data.length > 0) {
           setTeacherData(data.data[0])
         }
@@ -180,7 +180,7 @@ export default function SupervisionTeacher() {
         ...dataSupervisionTc // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3000/api/v1/supervisionteainsert', dataSupervisionTc)
+        .post('http://10.21.45.100:3000/api/v1/supervisionteainsert', dataSupervisionTc)
         .then(res => {
           window.location.reload()
         })

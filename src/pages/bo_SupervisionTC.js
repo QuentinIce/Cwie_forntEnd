@@ -24,7 +24,7 @@ export default function Bo_SupervisionTC() {
   ]
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/supervisiontea').then(res => {
+    axios.get('http://10.21.45.100:3000/api/v1/supervisiontea').then(res => {
       setDataRowSuperES(res.data.data)
     })
   }, [])

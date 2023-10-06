@@ -113,7 +113,7 @@ export default function Bo_Establishment_manage() {
     const onDel = { com_id: id }
     console.log('id', onDel)
     axios
-      .delete('http://localhost:3000/api/v1/companydelete', { data: onDel })
+      .delete('http://10.21.45.100:3000/api/v1/companydelete', { data: onDel })
       .then(res => {
         console.log(res)
         window.location.reload()
@@ -199,7 +199,7 @@ export default function Bo_Establishment_manage() {
         ...dataCompany // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3000/api/v1/companyinsert', dataCompany)
+        .post('http://10.21.45.100:3000/api/v1/companyinsert', dataCompany)
         .then(res => {
           console.log(res)
           window.location.reload()
@@ -240,7 +240,7 @@ export default function Bo_Establishment_manage() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/companys').then(res => {
+    axios.get('http://10.21.45.100:3000/api/v1/companys').then(res => {
       setRowDataComp(res.data.data)
     })
   }, [])
@@ -260,7 +260,7 @@ export default function Bo_Establishment_manage() {
         ...dataCompany // การจาย ที่เป็นก้อนออก ถ้าสลับข้อมูลจะอยู่ด้านหน้า
       }))
       axios
-        .post('http://localhost:3000/api/v1/companyupdate', dataCompany)
+        .post('http://10.21.45.100:3000/api/v1/companyupdate', dataCompany)
         .then(res => {
           console.log(res)
           window.location.reload()
